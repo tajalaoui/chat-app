@@ -10,8 +10,8 @@
       </v-list-item>
 
       <v-list nav>
-        <v-avatar class="d-block mx-auto" id="avatar">
-          <img src="/icon.png" alt="nav-profile-img" />
+        <v-avatar class="d-block mx-auto">
+          <img src="/profile-icon.png" alt="nav-profile-img" />
         </v-avatar>
         <v-list-item-content class="username mb-3">
           <v-list-item-title class="title">
@@ -73,14 +73,13 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-// a:hover,
-// .nuxt-link-exact-active {
-//   background: rgb(95, 10, 207);
-//   // transition: $transition;
-// }
 #avatar {
   height: 85px !important;
   width: 85px !important;
+}
+
+img {
+  z-index: 5 !important;
 }
 
 .title {

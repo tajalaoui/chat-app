@@ -12,6 +12,7 @@
             >
           </v-list-item-content>
         </v-list-item>
+        <v-divider></v-divider>
         <v-list-item>
           <v-list-item-content>
             <v-list-item-title>Change Password</v-list-item-title>

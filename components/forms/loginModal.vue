@@ -39,9 +39,9 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn class="white--text" color="red" @click="loginModal = false"
-          >Close</v-btn
+          >Cancel</v-btn
         >
-        <v-btn color="success" @click="loginModal = false">Save</v-btn>
+        <v-btn color="success" @click="loginModal = false">Login</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

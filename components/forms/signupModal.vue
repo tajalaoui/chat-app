@@ -66,9 +66,11 @@
       <v-card-actions>
         <v-spacer></v-spacer>
         <v-btn class="white--text" color="red" @click="signupModal = false"
-          >Close</v-btn
+          >Cancel</v-btn
         >
-        <v-btn color="success" @click="signupModal = false">Save</v-btn>
+        <v-btn color="success" @click="signupModal = false"
+          >Create Account</v-btn
+        >
       </v-card-actions>
     </v-card>
   </v-dialog>

@@ -98,6 +98,9 @@ export default {
           success: colors.green.accent3,
         },
       },
+      icons: {
+        iconfont: 'mdi', // default - only for display purposes
+      },
     },
   },
   /*
