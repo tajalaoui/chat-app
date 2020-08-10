@@ -7,7 +7,7 @@
         v-on="login"
         large
         outlined
-        color="orange darken-2"
+        color="success"
         >Login</v-btn
       >
     </template>

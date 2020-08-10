@@ -6,7 +6,7 @@
     <v-row>
       <v-col cols="12" class="account-header">
         <h1 id="username">Tajeddine</h1>
-        <v-subheader id="age-location">23, Marrakech</v-subheader>
+        <v-subheader id="age-location">25, Marrakech</v-subheader>
       </v-col>
     </v-row>
     <v-form>
@@ -18,7 +18,7 @@
             id="edit-btn"
             @click="editBehavior(index)"
             outlined
-            color="orange"
+            color="success"
             large
             >Edit</v-btn
           >
@@ -87,7 +87,7 @@ export default {
 
 <style lang="scss" scoped>
 #profile-img-wrapper {
-  background: $lightOrange;
+  background: $primaryColor;
   border-radius: 5px;
   height: 250px;
 

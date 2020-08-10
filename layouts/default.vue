@@ -1,6 +1,11 @@
 <template>
   <v-app>
-    <v-navigation-drawer color="#ff7043" app permanent>
+    <v-navigation-drawer
+      :width="[$device.isTablet || $device.isMobile ? 50 : 225]"
+      color="success"
+      app
+      permanent
+    >
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
@@ -59,15 +64,17 @@
 </template>
 
 <script>
+// let pageWidth = width: window.innerWidth || document.body.clientWidth
 export default {
   data: () => ({
     items: [
-      { title: 'Feed', to: '/feed', icon: 'rss' },
-      { title: 'Browse', to: '/browse', icon: 'search' },
-      { title: 'Profile', to: '/profile', icon: 'user' },
+      { title: 'Feed', to: '/', icon: 'rss' },
+      { title: 'Browse Profiles', to: '/browse', icon: 'search' },
       { title: 'Messages', to: '/messages', icon: 'comment-dots' },
+      { title: 'Profile', to: '/profile', icon: 'user' },
       { title: 'Settings', to: '/settings', icon: 'cog' },
     ],
+    isDeviceSmall: false,
   }),
 }
 </script>

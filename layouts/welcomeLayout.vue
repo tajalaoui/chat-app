@@ -17,10 +17,6 @@ export default {}
 </script>
 
 <style lang="scss" scoped>
-.v-main {
-  // background: $lightOrange;
-}
-
 .brand-name {
   color: $primaryColor !important;
 }

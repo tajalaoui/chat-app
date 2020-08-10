@@ -1,7 +1,7 @@
 <template>
   <v-container fluid>
     <v-card class="mx-auto">
-      <v-toolbar color="orange darken-4 white--text">
+      <v-toolbar color="success">
         <v-toolbar-title>Inbox</v-toolbar-title>
       </v-toolbar>
 

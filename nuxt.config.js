@@ -72,6 +72,7 @@ export default {
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
+    '@nuxtjs/device',
     'nuxt-webfontloader',
   ],
   /*
@@ -95,7 +96,11 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: colors.green.accent3,
+          success: '#29f709',
+        },
+        light: {
+          // white: '#FFFFFF',
+          success: '#29f709',
         },
       },
       icons: {

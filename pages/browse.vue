@@ -22,7 +22,7 @@
               <template v-slot:activator="{ msg, msgAttrs }">
                 <v-btn
                   @click="msgDialog = !msgDialog"
-                  color="orange"
+                  color="success"
                   v-on="msg"
                   v-bind="msgAttrs"
                   text
@@ -31,6 +31,7 @@
                 </v-btn>
               </template>
               <v-textarea
+                v-model.trim="message"
                 solo
                 placeholder="Send Message"
                 cols="30"
@@ -54,6 +55,7 @@
 export default {
   data: () => ({
     msgDialog: false,
+    message: '',
   }),
 }
 </script>

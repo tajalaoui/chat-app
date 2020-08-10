@@ -6,7 +6,7 @@
         v-bind="signupAttrs"
         v-on="signup"
         large
-        color="orange darken-2"
+        color="success"
         >Sign up</v-btn
       >
     </template>
@@ -38,7 +38,6 @@
                 ref="menu"
                 v-model="menu"
                 :close-on-content-click="false"
-                transition="scale-transition"
                 offset-y
                 min-width="290px"
               >
@@ -58,6 +57,14 @@
                   min="1950-01-01"
                   @change="save"
                 ></v-date-picker>
+                <v-autocomplete
+                  ref="country"
+                  v-model="country"
+                  :items="countries"
+                  label="Country"
+                  placeholder="Select..."
+                  required
+                ></v-autocomplete>
               </v-menu>
             </v-col>
           </v-row>
@@ -79,6 +86,8 @@
 <script>
 export default {
   data: () => ({
+    countries: ['Afghanistan', 'Albania'],
+    country: null,
     signupModal: false,
     date: null,
     menu: false,
@@ -91,6 +100,18 @@ export default {
   methods: {
     save(date) {
       this.$refs.menu.save(date)
+    },
+  },
+  computed: {
+    form() {
+      return {
+        // name: this.name,
+        // address: this.address,
+        // city: this.city,
+        // state: this.state,
+        // zip: this.zip,
+        country: this.country,
+      }
     },
   },
 }

@@ -30,14 +30,6 @@ body {
 }
 
 
-h1,
-h2,
-h3,
-h4,
-h5 {
-  font-family: 'Roboto Mono' !important;
-}
-
 a {
   color: inherit !important;
   text-decoration: none;
@@ -48,14 +40,13 @@ a:hover {
   cursor: pointer;
 }
 
-.brand-name {
-  font-family: 'Roboto Mono';
-  font-weight: 600;
-}
-
 img {
   width: 600px;
   height: 600px;
+}
+
+button {
+  // color: white !important;
 }
 
 // ROUTING ANIMATION.
