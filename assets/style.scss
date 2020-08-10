@@ -20,15 +20,14 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #ef6c00;
+  background: $primaryColor;
   border-radius: 5px;
 }
 
 ::selection {
-  background: #ff6f43c0;
+  background: #66bb6aef;
   color: #fafafa;
 }
-
 
 a {
   color: inherit !important;

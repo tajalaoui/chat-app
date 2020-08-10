@@ -60,6 +60,19 @@ export default {
    ** See https://nuxtjs.org/api/configuration-components
    */
   components: true,
+
+  // Pwa
+  manifest: {
+    icon: {
+      iconSrc: '@/static/icon.png',
+    },
+    short_name: 'tj-chat',
+    name: 'Social Network',
+    descreption: 'Social Network',
+    start_url: '/',
+    theme_color: '#29f709',
+    background_color: '#29f709',
+  },
   /*
    ** Nuxt.js dev-modules
    */

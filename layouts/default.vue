@@ -1,10 +1,12 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      :width="[$device.isTablet || $device.isMobile ? 50 : 225]"
+      :width="[$device.isTablet || $device.isMobile ? 45 : 215]"
       color="success"
       app
       permanent
+      disable-resize-watcher="true"
+      expand-on-hover="true"
     >
       <v-list-item>
         <v-list-item-content>

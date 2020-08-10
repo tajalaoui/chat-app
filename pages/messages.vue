@@ -1,20 +1,14 @@
 <template>
   <v-container fluid>
     <v-card class="mx-auto">
-      <v-toolbar color="success">
+      <v-toolbar >
         <v-toolbar-title>Inbox</v-toolbar-title>
       </v-toolbar>
 
       <v-list three-line>
         <template v-for="(item, index) in items">
-          <v-subheader
-            v-if="item.header"
-            :key="item.header"
-            v-text="item.header"
-          ></v-subheader>
-
           <v-divider
-            v-else-if="item.divider"
+            v-if="item.divider"
             :key="index"
             :inset="item.inset"
           ></v-divider>
@@ -41,7 +35,6 @@
 export default {
   data: () => ({
     items: [
-      { header: 'Todayy' },
       {
         avatar: 'https://cdn.vuetifyjs.com/images/lists/1.jpg',
         title: 'Brunch this weekend?',
