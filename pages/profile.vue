@@ -6,32 +6,39 @@
     <v-row>
       <v-col cols="12" class="account-header">
         <h1 id="username">Tajeddine</h1>
-        <v-subheader id="age-location">23, Marrakech</v-subheader>
+        <v-subheader style="height: 13px;" id="age-location"
+          >23, Marrakech</v-subheader
+        >
       </v-col>
     </v-row>
     <v-form>
       <v-list class="mt-5" three-line subheader>
-        <v-subheader>Account Details</v-subheader>
-        <div id="save-edit">
-          <v-btn
-            v-if="!isEdit"
-            id="edit-btn"
-            @click="editBehavior(index)"
-            outlined
-            color="primary"
-            large
-            >Edit</v-btn
-          >
-          <v-btn
-            v-if="isEdit"
-            id="save-btn"
-            @click="isEdit = !isEdit"
-            outlined
-            color="primary"
-            large
-            >Save</v-btn
-          >
-        </div>
+        <v-row>
+          <v-col cols="6"><v-subheader>Account Details</v-subheader></v-col>
+          <v-col cols="6">
+            <v-btn
+              class="save-edit"
+              v-if="!isEdit"
+              id="edit-btn"
+              @click="editBehavior(index)"
+              outlined
+              color="primary"
+              large
+              >Edit</v-btn
+            >
+            <v-btn
+              class="save-edit"
+              v-if="isEdit"
+              id="save-btn"
+              @click="isEdit = !isEdit"
+              outlined
+              color="primary"
+              large
+              >Save</v-btn
+            >
+          </v-col>
+        </v-row>
+
         <v-row>
           <v-col cols="12">
             <v-card
@@ -107,16 +114,22 @@ img,
 }
 
 .account-header {
-  margin-top: 2%;
+  margin-top: 1.5%;
 }
 
 input:hover {
   cursor: pointer;
 }
 
-// #save-edit {
-//   width: 100%;
-//   display: flex;
-//   margin-left: auto;
-// }
+.save-edit {
+  // width: 100px;
+  display: block;
+  margin-left: auto;
+}
+
+@media (max-width: 960px) {
+  .account-header {
+    margin-top: 6.1%;
+  }
+}
 </style>

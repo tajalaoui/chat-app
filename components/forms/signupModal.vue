@@ -30,6 +30,7 @@
               <v-text-field
                 label="Password"
                 type="password"
+                :counter="10"
                 required
               ></v-text-field>
             </v-col>
@@ -37,6 +38,7 @@
               <v-text-field
                 label="Confirm Password"
                 type="password"
+                :counter="10"
                 required
               ></v-text-field>
             </v-col>
@@ -84,7 +86,11 @@
         <v-btn class="white--text" color="red" @click="signupModal = false"
           >Cancel</v-btn
         >
-        <v-btn color="primary" @click="signupModal = false"
+        <v-btn
+          class="white--text"
+          to="/"
+          color="primary"
+          @click="signupModal = false"
           >Create Account</v-btn
         >
       </v-card-actions>

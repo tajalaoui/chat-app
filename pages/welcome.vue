@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fill-height>
     <v-row class="align-center">
       <v-col cols="12" md="6"
         ><h1>Looking for online friends ?</h1>
@@ -26,15 +26,15 @@ export default {
 <style lang="scss" scoped>
 @media (max-width: 1090px) {
   img {
-    width: 450px;
-    height: 450px;
+    width: 480px;
+    height: 480px;
   }
 }
 
 @media (max-width: 953px) {
   * {
-    flex-direction: column;
-    margin: 0 auto;
+    flex-direction: column !important;
+    margin: 0 auto !important;
   }
 }
 </style>

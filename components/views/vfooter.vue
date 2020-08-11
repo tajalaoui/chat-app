@@ -1,5 +1,5 @@
 <template>
-  <v-footer absolute>
+  <v-footer >
     <v-col class="text-center" cols="12">
       Copyright @{{ new Date().getFullYear() }} - Developed by -
       <strong>

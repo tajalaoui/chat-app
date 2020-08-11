@@ -10,7 +10,7 @@
       <v-list-item class="hidden-sm-and-down">
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
-            <h2 class="d-flex mx-auto">Taj-Chat</h2>
+            <h2 class="d-flex mx-auto"><nuxt-link to="/">Taj-Chat</nuxt-link></h2>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -99,9 +99,9 @@ export default {
 
 @media (max-width: 960px) {
   #avatar {
-    width: 35px;
-    height: 35px;
-    margin-right: 27px;
+    width: 33px;
+    height: 33px;
+    margin-right: 30px;
   }
 }
 </style>

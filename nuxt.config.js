@@ -109,7 +109,7 @@ export default {
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          primary: '#1b800b',
+          primary: '#21d604',
         },
         light: {
           primary: '#29f709',

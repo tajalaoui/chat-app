@@ -71,10 +71,7 @@
     <v-row class="mt-6">
       <v-col class="mt-5" cols="12" md="4">
         <v-card class="mx-auto" max-width="335">
-          <v-img
-            src="https://cdn.vuetifyjs.com/images/cards/sunshine.jpg"
-            height="200px"
-          ></v-img>
+          <v-img src="/desktop-bg.png" height="200px"></v-img>
 
           <v-card-title>
             Tajeddine Alaoui
@@ -85,7 +82,7 @@
           </v-card-subtitle>
 
           <v-card-actions>
-            <v-btn text>View Profile</v-btn>
+            <v-btn to="/profile" text>View Profile</v-btn>
             <v-dialog v-model="msgDialog" persistent width="600px">
               <template v-slot:activator="{ msg, msgAttrs }">
                 <v-btn
@@ -103,8 +100,8 @@
                   v-model.trim="message"
                   solo
                   placeholder="Send Message"
-                  cols="30"
-                  rows="10"
+                  cols="25"
+                  rows="7"
                 ></v-textarea>
 
                 <v-card-actions>
