@@ -101,7 +101,7 @@ export default {
   #avatar {
     width: 33px;
     height: 33px;
-    margin-right: 30px;
+    margin-right: 29px;
   }
 }
 </style>

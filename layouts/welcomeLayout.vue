@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar color="transparent" flat app role="toolbar">
+    <v-app-bar elevation="3" color="primary" flat app role="toolbar">
       <v-container
         ><v-toolbar-title class="text-uppercase">
           <nuxt-link class="brand-name" to="/"><h2>Taj-Chat</h2></nuxt-link>
@@ -18,6 +18,6 @@ export default {}
 
 <style lang="scss" scoped>
 .brand-name {
-  color: $primaryColor !important;
+  // color: $primaryColor !important;
 }
 </style>

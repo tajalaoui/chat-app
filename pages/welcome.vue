@@ -1,5 +1,5 @@
 <template>
-  <v-container fill-height>
+  <v-container >
     <v-row class="align-center">
       <v-col cols="12" md="6"
         ><h1>Looking for online friends ?</h1>
@@ -10,7 +10,7 @@
         </div>
       </v-col>
       <v-col cols="12" md="6"
-        ><img src="/pages/home.svg" alt="chatting"
+        ><img src="/pages/home.svg" alt="chatting-img"
       /></v-col>
     </v-row>
   </v-container>
@@ -24,10 +24,30 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@media (max-width: 1090px) {
+img {
+  display: block;
+  height: 720px;
+  width: 720px;
+}
+
+@media (max-width: 1150px) {
   img {
-    width: 480px;
-    height: 480px;
+    width: 565px;
+    height: 565px;
+  }
+}
+
+@media (max-width: 600px) {
+  img {
+    width: 383px;
+    height: 383px;
+  }
+}
+
+@media (max-width: 400px) {
+  img {
+    width: 280px;
+    height: 280px;
   }
 }
 
