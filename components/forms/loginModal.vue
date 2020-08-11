@@ -7,13 +7,13 @@
         v-on="login"
         large
         outlined
-        color="success"
+        color="primary"
         >Login</v-btn
       >
     </template>
     <v-card>
       <v-card-title>
-        <span class="headline">Login</span>
+        <h3>Login</h3>
       </v-card-title>
       <v-card-text>
         <v-container>
@@ -41,7 +41,7 @@
         <v-btn class="white--text" color="red" @click="loginModal = false"
           >Cancel</v-btn
         >
-        <v-btn color="success" @click="loginModal = false">Login</v-btn>
+        <v-btn color="primary" @click="loginModal = false">Login</v-btn>
       </v-card-actions>
     </v-card>
   </v-dialog>

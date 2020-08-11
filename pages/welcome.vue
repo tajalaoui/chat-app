@@ -22,3 +22,19 @@ export default {
   data: () => ({}),
 }
 </script>
+
+<style lang="scss" scoped>
+@media (max-width: 1090px) {
+  img {
+    width: 450px;
+    height: 450px;
+  }
+}
+
+@media (max-width: 953px) {
+  * {
+    flex-direction: column;
+    margin: 0 auto;
+  }
+}
+</style>

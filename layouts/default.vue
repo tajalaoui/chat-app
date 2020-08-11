@@ -2,26 +2,31 @@
   <v-app>
     <v-navigation-drawer
       :width="$device.isTablet || $device.isMobile ? 45 : 215"
-      color="success"
+      color="primary"
       app
       permanent
-      expand-on-hover
+      disable-resize-watcher
     >
-      <v-list-item>
+      <v-list-item class="hidden-sm-and-down">
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
-            Taj-Chat
+            <h2 class="d-flex mx-auto">Taj-Chat</h2>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
       <v-list nav>
-        <v-avatar class="d-block mx-auto">
-          <img src="/profile-icon.png" alt="nav-profile-img" />
+        <v-avatar style="width: 100%;" class="mt-7" size="62">
+          <img
+            class="title"
+            id="avatar"
+            src="/profile-icon.png"
+            alt="nav-profile-img"
+          />
         </v-avatar>
-        <v-list-item-content class="username mb-3">
+        <v-list-item-content class="username mb-3 hidden-sm-and-down">
           <v-list-item-title class="title">
-            Tajeddine
+            <h5>Tajeddine</h5>
           </v-list-item-title>
         </v-list-item-content>
         <v-divider></v-divider>
@@ -65,7 +70,6 @@
 </template>
 
 <script>
-// let pageWidth = width: window.innerWidth || document.body.clientWidth
 export default {
   data: () => ({
     items: [
@@ -81,16 +85,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-#avatar {
-  height: 85px !important;
-  width: 85px !important;
-}
-
-img {
-  z-index: 5 !important;
-}
-
 .title {
-  font-family: 'Roboto Mono' !important;
+  display: flex !important;
+  justify-content: center !important;
+}
+
+#avatar {
+  vertical-align: middle;
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+}
+
+@media (max-width: 960px) {
+  #avatar {
+    width: 35px;
+    height: 35px;
+  }
 }
 </style>

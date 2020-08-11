@@ -27,7 +27,7 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
+    link: [{ rel: 'icon', type: 'image/svg', href: '/favicon.svg' }],
   },
 
   /*
@@ -46,7 +46,7 @@ export default {
   // Importing fonts
   webfontloader: {
     google: {
-      families: ['Roboto Mono'],
+      families: ['Montserrat', 'Montserrat Alternates'],
     },
   },
 
@@ -103,17 +103,16 @@ export default {
       dark: false,
       themes: {
         dark: {
-          primary: colors.blue.darken2,
+          // primary: colors.blue.darken2,
           accent: colors.grey.darken3,
           secondary: colors.amber.darken3,
           info: colors.teal.lighten1,
           warning: colors.amber.base,
           error: colors.deepOrange.accent4,
-          success: '#29f709',
+          primary: '#1b800b',
         },
         light: {
-          // white: '#FFFFFF',
-          success: '#29f709',
+          primary: '#29f709',
         },
       },
       icons: {

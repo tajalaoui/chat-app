@@ -6,13 +6,13 @@
         v-bind="signupAttrs"
         v-on="signup"
         large
-        color="success"
+        color="primary"
         >Sign up</v-btn
       >
     </template>
     <v-card>
       <v-card-title>
-        <span class="headline">Create Account</span>
+        <h3>Create Account</h3>
       </v-card-title>
       <v-card-text>
         <v-container>
@@ -33,7 +33,14 @@
                 required
               ></v-text-field>
             </v-col>
-            <v-col cols="12" sm="6">
+            <v-col cols="12">
+              <v-text-field
+                label="Confirm Password"
+                type="password"
+                required
+              ></v-text-field>
+            </v-col>
+            <v-col cols="6">
               <v-menu
                 ref="menu"
                 v-model="menu"
@@ -57,16 +64,18 @@
                   min="1950-01-01"
                   @change="save"
                 ></v-date-picker>
-                <v-autocomplete
-                  ref="country"
-                  v-model="country"
-                  :items="countries"
-                  label="Country"
-                  placeholder="Select..."
-                  required
-                ></v-autocomplete>
               </v-menu>
             </v-col>
+            <v-col cols="6"
+              ><v-autocomplete
+                ref="country"
+                v-model="country"
+                :items="countries"
+                label="Country"
+                placeholder="Select..."
+                required
+              ></v-autocomplete
+            ></v-col>
           </v-row>
         </v-container>
       </v-card-text>
@@ -75,7 +84,7 @@
         <v-btn class="white--text" color="red" @click="signupModal = false"
           >Cancel</v-btn
         >
-        <v-btn color="success" @click="signupModal = false"
+        <v-btn color="primary" @click="signupModal = false"
           >Create Account</v-btn
         >
       </v-card-actions>
@@ -86,7 +95,7 @@
 <script>
 export default {
   data: () => ({
-    countries: ['Afghanistan', 'Albania'],
+    countries: ['Morocco', 'United Kingdom'],
     country: null,
     signupModal: false,
     date: null,

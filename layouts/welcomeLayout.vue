@@ -3,7 +3,7 @@
     <v-app-bar color="transparent" flat app role="toolbar">
       <v-container
         ><v-toolbar-title class="text-uppercase">
-          <nuxt-link class="brand-name" to="/">Taj-Chat</nuxt-link>
+          <nuxt-link class="brand-name" to="/"><h2>Taj-Chat</h2></nuxt-link>
         </v-toolbar-title></v-container
       >
     </v-app-bar>

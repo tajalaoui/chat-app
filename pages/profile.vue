@@ -1,12 +1,12 @@
 <template>
   <v-container>
-    <div id="profile-img-wrapper">
+    <v-card color="primary" id="profile-img-wrapper">
       <img class="" src="/profile-icon.png" alt="profile-img" />
-    </div>
+    </v-card>
     <v-row>
       <v-col cols="12" class="account-header">
         <h1 id="username">Tajeddine</h1>
-        <v-subheader id="age-location">25, Marrakech</v-subheader>
+        <v-subheader id="age-location">23, Marrakech</v-subheader>
       </v-col>
     </v-row>
     <v-form>
@@ -18,7 +18,7 @@
             id="edit-btn"
             @click="editBehavior(index)"
             outlined
-            color="success"
+            color="primary"
             large
             >Edit</v-btn
           >
@@ -27,7 +27,7 @@
             id="save-btn"
             @click="isEdit = !isEdit"
             outlined
-            color="success"
+            color="primary"
             large
             >Save</v-btn
           >
@@ -87,7 +87,6 @@ export default {
 
 <style lang="scss" scoped>
 #profile-img-wrapper {
-  background: $primaryColor;
   border-radius: 5px;
   height: 250px;
 

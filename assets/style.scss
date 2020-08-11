@@ -29,6 +29,19 @@ body {
   color: #fafafa;
 }
 
+.v-main,
+.v-text-field, span {
+  font-family: 'Montserrat', sans-serif !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: 'Montserrat Alternates';
+}
+
 a {
   color: inherit !important;
   text-decoration: none;
