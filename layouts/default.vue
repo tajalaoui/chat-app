@@ -16,7 +16,7 @@
       </v-list-item>
 
       <v-list nav>
-        <v-avatar style="width: 100%;" class="mt-7" size="62">
+        <v-avatar style="width: 100%;" class="mt-sm-and-up-7" size="62">
           <img
             class="title"
             id="avatar"
@@ -24,7 +24,7 @@
             alt="nav-profile-img"
           />
         </v-avatar>
-        <v-list-item-content class="username mb-3 hidden-sm-and-down">
+        <v-list-item-content class="username mb-sm-and-up-3 hidden-sm-and-down">
           <v-list-item-title class="title">
             <h5>Tajeddine</h5>
           </v-list-item-title>
@@ -101,6 +101,7 @@ export default {
   #avatar {
     width: 35px;
     height: 35px;
+    margin-right: 27px;
   }
 }
 </style>
