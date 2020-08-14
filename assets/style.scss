@@ -11,17 +11,17 @@ body {
   padding: 0;
   height: 100vh;
   width: 100vw;
-  overflow: auto;
 }
 
-::-webkit-scrollbar {
+body::-webkit-scrollbar {
+  width: 9px;
+}
+body::-webkit-scrollbar-track {
   background: #fafafa;
-  width: 12px;
 }
-
-::-webkit-scrollbar-thumb {
-  background: $primaryColor;
-  border-radius: 5px;
+body::-webkit-scrollbar-thumb {
+  background-color: $primaryColor;
+  border-radius: 11px;
 }
 
 ::selection {
@@ -30,7 +30,8 @@ body {
 }
 
 .v-main,
-.v-text-field, span {
+.v-text-field,
+span {
   font-family: 'Montserrat', sans-serif !important;
 }
 

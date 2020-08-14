@@ -15,9 +15,3 @@
 <script>
 export default {}
 </script>
-
-<style lang="scss" scoped>
-.brand-name {
-  // color: $primaryColor !important;
-}
-</style>

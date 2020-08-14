@@ -49,6 +49,8 @@
                 <v-list-item-content>
                   <v-list-item-title>{{ profile.title }}</v-list-item-title>
                   <v-text-field
+                    full-width
+                    single-line
                     v-if="isEdit"
                     class="text-field"
                     :value="profile.subtitle"

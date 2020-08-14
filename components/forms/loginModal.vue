@@ -19,12 +19,7 @@
         <v-container>
           <v-row>
             <v-col cols="12">
-              <v-text-field
-                color="#ff7043"
-                label="Email"
-                type="email"
-                required
-              ></v-text-field>
+              <v-text-field label="Email" type="email" required></v-text-field>
             </v-col>
             <v-col cols="12">
               <v-text-field
@@ -41,7 +36,13 @@
         <v-btn class="white--text" color="red" @click="loginModal = false"
           >Cancel</v-btn
         >
-        <v-btn class="white--text" to="/" color="primary" @click="loginModal = false">Login</v-btn>
+        <v-btn
+          class="white--text"
+          to="/"
+          color="primary"
+          @click="loginModal = false"
+          >Login</v-btn
+        >
       </v-card-actions>
     </v-card>
   </v-dialog>

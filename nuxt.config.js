@@ -118,6 +118,9 @@ export default {
       icons: {
         iconfont: 'mdi', // default - only for display purposes
       },
+      font: {
+        family: 'Montserrat',
+      },
     },
   },
   /*

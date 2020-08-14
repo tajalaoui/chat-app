@@ -1,16 +1,18 @@
 <template>
   <v-app>
     <v-navigation-drawer
-      :width="$device.isTablet || $device.isMobile ? 45 : 215"
+      :width="$device.isTablet || $device.isMobile ? 49 : 200"
       color="primary"
       app
       permanent
-      disable-resize-watcher
+      stateless
     >
       <v-list-item class="hidden-sm-and-down">
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
-            <h2 class="d-flex mx-auto"><nuxt-link to="/">Taj-Chat</nuxt-link></h2>
+            <h2 class="d-flex mx-auto">
+              <nuxt-link to="/">Taj-Chat</nuxt-link>
+            </h2>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -85,9 +87,12 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.v-navigation-drawer {
+  font-family: 'Montserrat';
+}
 .title {
-  display: flex !important;
-  justify-content: center !important;
+  display: flex;
+  justify-content: center;
 }
 
 #avatar {
@@ -95,6 +100,10 @@ export default {
   width: 62px;
   height: 62px;
   border-radius: 50%;
+}
+
+.v-list-item__icon {
+  margin-right: 5px !important;
 }
 
 @media (max-width: 960px) {
