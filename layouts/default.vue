@@ -67,7 +67,7 @@
       <nuxt />
     </v-main>
 
-    <LazyVfooter />
+    <vfooter />
   </v-app>
 </template>
 
