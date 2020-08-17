@@ -9,9 +9,9 @@
       transition="dialog-bottom-transition"
     >
       <template v-slot:activator="{ msgDialog, attrs }">
-        <LazyCloseChatBtn v-show="msgDialog" v-bind="attrs" v-on="msgDialog" />
+        <LazyMsgCloseBtn v-show="msgDialog" v-bind="attrs" v-on="msgDialog" />
       </template>
-      <LazyMsgBox />
+      <LazyMsg />
     </v-dialog>
   </v-row>
 </template>

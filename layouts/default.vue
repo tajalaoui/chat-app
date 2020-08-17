@@ -19,12 +19,13 @@
 
       <v-list nav>
         <v-avatar style="width: 100%;" class="mt-sm-and-up-7" size="62">
-          <img
-            class="title"
-            id="avatar"
-            src="/profile-icon.png"
-            alt="nav-profile-img"
-          />
+          <nuxt-link to="/profile"
+            ><img
+              class="title"
+              id="avatar"
+              src="/profile-icon.png"
+              alt="nav-profile-img"
+          /></nuxt-link>
         </v-avatar>
         <v-list-item-content class="username mb-sm-and-up-3 hidden-sm-and-down">
           <v-list-item-title class="title">

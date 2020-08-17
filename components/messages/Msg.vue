@@ -1,9 +1,9 @@
 <template>
   <div>
     <!-- Todo add position fixed -->
-    <v-card elevation="3" min-height="750">
+    <v-card flat elevation="3" min-height="85vh">
       <v-toolbar flat>
-        <LazyCloseChatBtn />
+        <LazyMsgCloseBtn />
         <v-avatar size="53px"
           ><img src="https://cdn.vuetifyjs.com/images/lists/1.jpg" alt=""
         /></v-avatar>
@@ -55,7 +55,8 @@
         >
       </v-card>
     </v-card>
-    <v-card class="mt-1">
+
+    <v-card flat>
       <div>
         <v-row class="align-center">
           <v-col :cols="$device.isDesktop ? 11 : 9"
@@ -87,6 +88,7 @@ export default {
 
 <style lang="scss" scoped>
 .v-card {
+  border-radius: 0;
   .v-card__text {
     font-weight: bold;
   }

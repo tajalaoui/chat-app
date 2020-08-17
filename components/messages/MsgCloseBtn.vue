@@ -1,7 +1,8 @@
 <template>
   <v-btn
+    small
     v-if="!$device.isDesktop"
-    class="mr-1"
+    class="mr-2"
     color="primary"
     icon
     @click="closeModal"
@@ -11,15 +12,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
 export default {
   methods: {
     closeModal() {
       this.$store.commit('closeModal')
     },
-  },
-  computed: {
-    ...mapState['msgDialog'],
   },
 }
 </script>

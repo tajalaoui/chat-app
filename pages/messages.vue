@@ -2,7 +2,7 @@
   <v-container fluid>
     <!-- Mobile msg -->
     <!-- Use props and events -->
-    <LazyMobileMsgModal v-if="!$device.isDesktop" />
+    <LazyMsgMobile v-if="!$device.isDesktop" />
     <v-row>
       <v-col :cols="!$device.isDesktop ? 12 : 3">
         <v-card class="mx-auto">
@@ -31,7 +31,7 @@
         </v-card>
       </v-col>
       <v-col v-if="$device.isDesktop">
-        <LazyMsgBox />
+        <LazyMsg />
       </v-col>
     </v-row>
   </v-container>
