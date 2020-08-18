@@ -67,9 +67,9 @@ export default {
       iconSrc: '@/static/icon.png',
     },
     short_name: 'lot',
-    name: 'Competitive Social Network',
+    name: 'League Of Taj',
     // TODO: edit descreption
-    descreption: 'Social Network',
+    descreption: 'Competitive Social Network',
     start_url: '/',
     theme_color: '#29f709',
     background_color: '#29f709',
