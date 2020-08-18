@@ -3,8 +3,10 @@
     <v-row class="align-center">
       <v-col cols="12" md="6">
         <header>
-          <h1 class="d-block mx-auto">Looking for online friends ?</h1>
-          <h4>Say no more</h4>
+          <h1 class="d-block mx-auto">
+            Looking for a competitive social network ?
+          </h1>
+          <h4>League Of Taj is your place</h4>
 
           <div class="mt-3">
             <LazySignupModal />
@@ -58,7 +60,7 @@ img {
   * {
     margin: 0 auto;
   }
-  
+
   header {
     text-align: center;
   }

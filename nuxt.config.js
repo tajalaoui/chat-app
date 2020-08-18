@@ -27,7 +27,7 @@ export default {
         content: process.env.npm_package_description || '',
       },
     ],
-    link: [{ rel: 'icon', type: 'image/svg', href: '/favicon.svg' }],
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }],
   },
 
   /*
@@ -66,8 +66,9 @@ export default {
     icon: {
       iconSrc: '@/static/icon.png',
     },
-    short_name: 'tj-chat',
-    name: 'Social Network',
+    short_name: 'lot',
+    name: 'Competitive Social Network',
+    // TODO: edit descreption
     descreption: 'Social Network',
     start_url: '/',
     theme_color: '#29f709',

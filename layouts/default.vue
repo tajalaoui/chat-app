@@ -10,9 +10,9 @@
       <v-list-item class="hidden-sm-and-down">
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
-            <h2 class="d-flex mx-auto">
-              <nuxt-link to="/">Taj-Chat</nuxt-link>
-            </h2>
+            <h3 class="d-flex mx-auto">
+              <nuxt-link to="/">League Of Taj</nuxt-link>
+            </h3>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
@@ -68,7 +68,7 @@
       <nuxt />
     </v-main>
 
-    <vfooter />
+    <LazyTheFooter />
   </v-app>
 </template>
 
