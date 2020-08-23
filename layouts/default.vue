@@ -29,10 +29,10 @@
         </v-avatar>
         <v-list-item-content class="username mb-sm-and-up-3 hidden-sm-and-down">
           <v-list-item-title class="title">
-            <h5 class="mb-5">Tajeddine</h5>
+            <h5>Tajeddine</h5>
           </v-list-item-title>
         </v-list-item-content>
-
+        <div class="mb-5"></div>
         <nuxt-link v-for="item in items" :key="item.title" :to="item.to">
           <v-list-item link>
             <v-list-item-icon>

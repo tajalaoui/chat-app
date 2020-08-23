@@ -1,7 +1,7 @@
 <template>
   <v-form>
     <v-row>
-      <v-col class="ml-7" cols="5">
+      <v-col class="ml-7" cols="10" md5>
         <v-text-field
           :value="profileInfo.username"
           label="Username"
