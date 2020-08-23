@@ -11,7 +11,7 @@
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
             <h3 class="d-flex mx-auto">
-              <nuxt-link to="/">globipals</nuxt-link>
+              <nuxt-link to="/">GlobiPals</nuxt-link>
             </h3>
           </v-list-item-title>
         </v-list-item-content>
@@ -29,10 +29,9 @@
         </v-avatar>
         <v-list-item-content class="username mb-sm-and-up-3 hidden-sm-and-down">
           <v-list-item-title class="title">
-            <h5>Tajeddine</h5>
+            <h5 class="mb-5">Tajeddine</h5>
           </v-list-item-title>
         </v-list-item-content>
-        <v-divider></v-divider>
 
         <nuxt-link v-for="item in items" :key="item.title" :to="item.to">
           <v-list-item link>
@@ -76,8 +75,7 @@
 export default {
   data: () => ({
     items: [
-      { title: 'Feed', to: '/', icon: 'rss' },
-      { title: 'Browse Profiles', to: '/browse', icon: 'search' },
+      { title: 'Browse Profiles', to: '/', icon: 'search' },
       { title: 'Messages', to: '/messages', icon: 'comment-dots' },
       { title: 'Profile', to: '/profile', icon: 'user' },
       { title: 'Settings', to: '/settings', icon: 'cog' },

@@ -1,55 +1,29 @@
 <template>
-  <v-container>
-    <v-list three-line subheader>
-      <v-subheader>Account</v-subheader>
-      <v-card
-        ><v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Change Username</v-list-item-title>
-            <v-list-item-subtitle
-              >Set the content filtering level to restrict apps that can be
-              downloaded</v-list-item-subtitle
-            >
-          </v-list-item-content>
-        </v-list-item>
-        <v-divider></v-divider>
-        <v-list-item>
-          <v-list-item-content>
-            <v-list-item-title>Change Password</v-list-item-title>
-            <v-list-item-subtitle
-              >Require password for purchase or use password to restrict
-              purchase</v-list-item-subtitle
-            >
-          </v-list-item-content>
-        </v-list-item></v-card
-      >
-    </v-list>
-    <v-subheader>Theme</v-subheader>
-    <v-card
-      ><v-list-item>
-        <v-list-item-content>
-          <v-list-item-title>Dark Theme</v-list-item-title>
-          <v-switch @change="checkDarkMode" v-model="isDark"></v-switch>
-        </v-list-item-content> </v-list-item
-    ></v-card>
+  <v-container fluid>
+    <v-card>
+      <v-toolbar flat color="primary">
+        <v-toolbar-title>Settings</v-toolbar-title>
+      </v-toolbar>
+      <v-tabs>
+        <v-tab>
+          <v-icon left>mdi-account</v-icon>
+          My Account
+        </v-tab>
+
+        <v-tab>
+          <v-icon left>mdi-credit-card</v-icon>
+          Subscriptions
+        </v-tab>
+
+        <v-tab-item>
+          <v-card flat>
+            <LazySettingsCards />
+          </v-card>
+        </v-tab-item>
+        <v-tab-item>
+          <v-card flat> </v-card>
+        </v-tab-item>
+      </v-tabs>
+    </v-card>
   </v-container>
 </template>
-
-<script>
-export default {
-  data: () => ({
-    isDark: null,
-  }),
-  computed: {
-    checkDarkMode() {
-      if (this.isDark) {
-        this.$vuetify.theme.dark = true
-      } else {
-        this.$vuetify.theme.dark = false
-      }
-    },
-  },
-}
-</script>
-
-<style></style>
