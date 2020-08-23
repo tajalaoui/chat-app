@@ -59,9 +59,7 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn class="white--text" color="red" @click="filterProfiles = false"
-            >Cancel</v-btn
-          >
+          <v-btn @click="filterProfiles = false">Cancel</v-btn>
           <v-btn color="primary" @click="filterProfiles = false">Filter</v-btn>
         </v-card-actions>
       </v-card>
@@ -105,10 +103,7 @@
                 ></v-textarea>
 
                 <v-card-actions>
-                  <v-btn
-                    class="white--text d-block ml-auto"
-                    @click="msgDialog = false"
-                    color="red"
+                  <v-btn class="d-block ml-auto" @click="msgDialog = false"
                     >Cancel</v-btn
                   >
                   <v-btn color="primary">Send</v-btn>

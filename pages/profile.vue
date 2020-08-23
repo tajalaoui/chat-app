@@ -14,8 +14,7 @@
     <v-form>
       <v-list class="mt-5" three-line subheader>
         <v-row>
-          <v-col cols="6"><v-subheader>Account Details</v-subheader></v-col>
-          <v-col cols="6">
+          <v-col class="ml-auto" cols="6">
             <v-btn
               class="save-edit"
               v-if="!isEdit"
@@ -42,26 +41,28 @@
         <v-row>
           <v-col cols="12">
             <v-card
-              ><v-list-item
-                v-for="(profile, index) in profileInfo"
-                :key="index"
-              >
+              class="my-3"
+              v-for="(profile, index) in profileInfo"
+              :key="index"
+              ><v-list-item>
                 <v-list-item-content>
                   <v-list-item-title>{{ profile.title }}</v-list-item-title>
-                  <v-text-field
-                    full-width
-                    single-line
+                  <v-textarea
+                    filled
+                    auto-grow
                     v-if="isEdit"
-                    class="text-field"
                     :value="profile.subtitle"
                   >
-                  </v-text-field>
+                  </v-textarea>
 
                   <v-list-item-subtitle v-else>{{
                     profile.subtitle
                   }}</v-list-item-subtitle>
                 </v-list-item-content>
               </v-list-item>
+            </v-card>
+            <v-card class="mb-7">
+              <LazyProfileCombobox />
             </v-card>
           </v-col>
         </v-row>
@@ -78,12 +79,16 @@ export default {
       {
         title: 'My self-summary',
         subtitle:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatem esse, blanditiis tempore alias aut at quis saepe,consequatur dolor fuga sequi natus.',
+          'Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatem esse, blanditiis tempore alsias aut at quis saepe,consequatur dolor fuga sequi natus.',
       },
       {
         title: 'I spend a lot of time thinking about',
         subtitle: 'Futre for example',
       },
+      { title: 'Languages i want to learn', subtitle: 'Javascript' },
+      { title: 'things i could never live without', subtitle: 'Pc' },
+      { title: 'My golden rule', subtitle: 'Stay positive' },
+      { title: 'My next big trip', subtitle: 'Japan' },
     ],
   }),
   methods: {

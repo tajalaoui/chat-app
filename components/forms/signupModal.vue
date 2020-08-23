@@ -83,9 +83,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn class="white--text" color="red" @click="signupModal = false"
-          >Cancel</v-btn
-        >
+        <v-btn @click="signupModal = false">Cancel</v-btn>
         <v-btn
           class="white--text"
           to="/"

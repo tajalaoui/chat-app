@@ -33,9 +33,7 @@
       </v-card-text>
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn class="white--text" color="red" @click="loginModal = false"
-          >Cancel</v-btn
-        >
+        <v-btn @click="loginModal = false">Cancel</v-btn>
         <v-btn
           class="white--text"
           to="/"
