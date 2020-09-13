@@ -12,14 +12,18 @@
           label="Email"
           type="email"
         ></v-text-field>
-        <h4>Security</h4>
+
         <v-text-field
           :value="profileInfo.password"
           label="Password"
           type="password"
         ></v-text-field>
 
-        <v-switch @change="checkDarkMode" v-model="isDark" label="Dark Theme"></v-switch>
+        <v-switch
+          @change="checkDarkMode"
+          v-model="isDark"
+          label="Dark Theme"
+        ></v-switch>
       </v-col>
     </v-row>
   </v-form>

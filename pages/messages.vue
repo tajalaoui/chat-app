@@ -14,7 +14,7 @@
                 :inset="item.inset"
               ></v-divider>
 
-              <v-list-item v-else="" :key="item.title" @click="openModal">
+              <v-list-item v-else :key="item.title" @click="openModal">
                 <v-list-item-avatar>
                   <v-img :src="item.avatar"></v-img>
                 </v-list-item-avatar>
