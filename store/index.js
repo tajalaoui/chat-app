@@ -13,6 +13,7 @@ export const mutations = {
     this.$axios.defaults.headers.common[
       'Authorization'
     ] = `Bearer ${userData.token}`
+    this.$router.push('/')
   },
   CLEAR_USER_DATA(state) {
     state.user = null

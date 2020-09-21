@@ -101,15 +101,12 @@ export default {
   }),
 
   methods: {
-    validate() {
-      this.$store
-        .dispatch('register', this.userInfo)
-        .then(() => {
-          this.$router.push('/')
-        })
-        .catch((err) => {
-          console.log('Signup modal error')
-        })
+    async validate() {
+      try {
+        await this.$store.dispatch('register', this.userInfo)
+      } catch (err) {
+        console.log('Signup modal error')
+      }
     },
     submitForm() {},
   },

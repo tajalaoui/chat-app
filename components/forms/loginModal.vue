@@ -68,7 +68,7 @@ export default {
     async validate() {
       try {
         await this.$store.dispatch('login', this.userInfo)
-        await this.$router.push('/')
+        this.$router.push('/')
       } catch (error) {
         console.log(error)
       }

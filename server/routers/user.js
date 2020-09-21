@@ -8,27 +8,27 @@ const User = require('../model/user')
 
 router.post('/server/register', async (req, res) => {
   // if (req.body) {
-    // const user = {
-    //   name: req.body.name,
-    //   email: req.body.email,
-    //   password: req.body.password,
-    // }
+  // const user = {
+  //   name: req.body.name,
+  //   email: req.body.email,
+  //   password: req.body.password,
+  // }
 
-    try {
-      const user = new User(req.body)
-      await user.save()
-    } catch (e) {
-      console.log(e)
-    }
+  try {
+    const user = new User(req.body)
+    await user.save()
+  } catch (e) {
+    console.log(e)
+  }
 
-    // const token = await jwt.sign({}, 'the_secret_key')
-    // res.json({
-    //   token,
-    //   email: user.email,
-    //   name: user.name,
-    // })
+  // const token = await jwt.sign({}, 'the_secret_key')
+  // res.json({
+  //   token,
+  //   email: user.email,
+  //   name: user.name,
+  // })
   // } else {
-    // res.sendStatus(401)
+  // res.sendStatus(401)
   // }
 })
 
