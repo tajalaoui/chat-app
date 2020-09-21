@@ -79,7 +79,7 @@ export default {
   }),
   methods: {
     openModal() {
-      this.$store.commit('openModal')
+      this.$store.commit('mobileModal/openModal')
     },
   },
 }

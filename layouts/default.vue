@@ -11,14 +11,14 @@
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
             <h3 class="d-flex mx-auto">
-              <nuxt-link to="/">GlobiPals</nuxt-link>
+              <nuxt-link to="/">GlobiPals </nuxt-link>
             </h3>
           </v-list-item-title>
         </v-list-item-content>
       </v-list-item>
 
       <v-list nav>
-        <v-avatar style="width: 100%;" class="mt-sm-and-up-7" size="62">
+        <v-avatar style="width: 100%" class="mt-sm-and-up-7" size="62">
           <nuxt-link to="/profile"
             ><img
               class="title"
@@ -46,20 +46,16 @@
         </nuxt-link>
 
         <!-- Settings -->
-        <nuxt-link to="/welcome"
-          ><v-list-item
-            link
-            style="position: absolute; bottom: 3%; width: 95%;"
-          >
-            <v-list-item-icon>
-              <icon :icon="['fas', 'power-off']" />
-            </v-list-item-icon>
 
-            <v-list-item-content>
-              <v-list-item-title>Log Out</v-list-item-title>
-            </v-list-item-content>
-          </v-list-item></nuxt-link
-        >
+        <v-list-item link style="position: absolute; bottom: 3%; width: 95%">
+          <v-list-item-icon>
+            <icon :icon="['fas', 'power-off']" />
+          </v-list-item-icon>
+
+          <v-list-item-content>
+            <v-list-item-title @click="logout">Log Out</v-list-item-title>
+          </v-list-item-content>
+        </v-list-item>
       </v-list>
     </v-navigation-drawer>
 
@@ -73,6 +69,7 @@
 
 <script>
 export default {
+  // middleware: 'auth',
   data: () => ({
     items: [
       { title: 'Browse Profiles', to: '/', icon: 'search' },
@@ -80,8 +77,12 @@ export default {
       { title: 'Profile', to: '/profile', icon: 'user' },
       { title: 'Settings', to: '/settings', icon: 'cog' },
     ],
-    isDeviceSmall: false,
   }),
+  methods: {
+    logout() {
+      this.$store.dispatch('logout')
+    },
+  },
 }
 </script>
 

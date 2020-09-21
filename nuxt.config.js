@@ -7,6 +7,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-target
    */
   target: 'server',
+  serverMiddleware: ['@/server/index.js'],
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
@@ -50,7 +51,7 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/fontawesome.js'],
+  plugins: ['@/plugins/fontawesome.js', '@/plugins/auth.js'],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -62,10 +63,10 @@ export default {
     icon: {
       iconSrc: '@/static/icon.png',
     },
-    short_name: 'lot',
-    name: 'League Of Taj',
+    short_name: 'GP',
+    name: 'Globi Pals',
     // TODO: edit descreption
-    descreption: 'Competitive Social Network',
+    descreption: 'Global Penpals',
     start_url: '/',
     theme_color: '#29f709',
     background_color: '#29f709',
@@ -78,23 +79,17 @@ export default {
    ** Nuxt.js modules
    */
   modules: [
-    // Doc: https://axios.nuxtjs.org/usage
     '@nuxtjs/axios',
     '@nuxtjs/pwa',
     '@nuxtjs/style-resources',
     '@nuxtjs/device',
     'nuxt-webfontloader',
   ],
-  /*
-   ** Axios module configuration
-   ** See https://axios.nuxtjs.org/options
-   */
-  axios: {},
+
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
    */
-
   vuetify: {
     customVariables: ['~/assets/variables/variables.scss'],
     theme: {
@@ -114,7 +109,7 @@ export default {
         },
       },
       icons: {
-        iconfont: 'mdi', // default - only for display purposes
+        iconfont: 'mdi',
       },
       font: {
         family: 'Montserrat',

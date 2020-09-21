@@ -3,23 +3,30 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "dev": "nuxt",
-    "build": "nuxt build",
-    "start": "nuxt start",
-    "export": "nuxt export",
     "serve": "nuxt serve",
-    "generate": "nuxt generate"
+    "build": "nuxt build",
+    "dev": "nuxt",
+    "export": "nuxt export",
+    "generate": "nuxt generate",
+    "start": "nuxt start"
   },
   "dependencies": {
-    "@nuxtjs/axios": "^5.11.0",
+    "@nuxtjs/axios": "^5.12.2",
     "@nuxtjs/device": "^1.2.7",
     "@nuxtjs/pwa": "^3.0.0-beta.20",
     "@nuxtjs/style-resources": "^1.0.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "global": "^4.4.0",
+    "jsonwebtoken": "^8.5.1",
     "mongodb": "^3.6.2",
     "mongoose": "^5.10.5",
-    "nuxt": "^2.13.0",
+    "nuxt": "^2.14.5",
     "nuxt-fontawesome": "^0.4.0",
-    "nuxt-webfontloader": "^1.1.0"
+    "nuxt-webfontloader": "^1.1.0",
+    "validator": "^13.1.17"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-free-brands": "^5.0.13",
@@ -29,6 +36,7 @@
     "@nuxtjs/vuetify": "^1.11.2",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "nodemon": "^1.18.9",
     "prettier": "^2.0.5"
   }
 }

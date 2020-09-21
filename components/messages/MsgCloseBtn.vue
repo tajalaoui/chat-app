@@ -15,7 +15,7 @@
 export default {
   methods: {
     closeModal() {
-      this.$store.commit('closeModal')
+      this.$store.commit('mobileModal/closeModal')
     },
   },
 }

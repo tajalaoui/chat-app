@@ -17,31 +17,39 @@
       </v-card-title>
       <v-card-text>
         <v-container>
-          <v-row>
-            <v-col cols="12">
-              <v-text-field label="Email" type="email" required></v-text-field>
-            </v-col>
-            <v-col cols="12">
-              <v-text-field
-                label="Password"
-                type="password"
-                required
-              ></v-text-field>
-            </v-col>
-          </v-row>
+          <v-form @submit.prevent="validate" ref="form">
+            <v-row>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="userInfo.email"
+                  label="Email"
+                  type="email"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col cols="12">
+                <v-text-field
+                  v-model="userInfo.password"
+                  label="Password"
+                  :type="showPassword ? 'text' : 'password'"
+                  :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
+                  @click:append="showPassword = !showPassword"
+                  required
+                ></v-text-field>
+              </v-col>
+              <v-col>
+                <v-card-actions>
+                  <v-spacer></v-spacer>
+                  <v-btn @click="loginModal = false">Cancel</v-btn>
+                  <v-btn class="white--text" type="submit" color="primary"
+                    >Login</v-btn
+                  >
+                </v-card-actions>
+              </v-col>
+            </v-row>
+          </v-form>
         </v-container>
       </v-card-text>
-      <v-card-actions>
-        <v-spacer></v-spacer>
-        <v-btn @click="loginModal = false">Cancel</v-btn>
-        <v-btn
-          class="white--text"
-          to="/"
-          color="primary"
-          @click="loginModal = false"
-          >Login</v-btn
-        >
-      </v-card-actions>
     </v-card>
   </v-dialog>
 </template>
@@ -49,7 +57,22 @@
 <script>
 export default {
   data: () => ({
+    userInfo: {
+      email: '',
+      password: '',
+    },
     loginModal: false,
+    showPassword: false,
   }),
+  methods: {
+    async validate() {
+      try {
+        await this.$store.dispatch('login', this.userInfo)
+        await this.$router.push('/')
+      } catch (error) {
+        console.log(error)
+      }
+    },
+  },
 }
 </script>

@@ -20,7 +20,7 @@
 import { mapState } from 'vuex'
 export default {
   computed: {
-    ...mapState(['msgDialog']),
+    ...mapState('mobileModal', ['msgDialog']),
   },
 }
 </script>
