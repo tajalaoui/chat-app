@@ -11,7 +11,7 @@
         <v-list-item-content>
           <v-list-item-title class="title brand-name">
             <h3 class="d-flex mx-auto">
-              <nuxt-link to="/">GlobiPals </nuxt-link>
+              <nuxt-link to="/">GlobiPals</nuxt-link>
             </h3>
           </v-list-item-title>
         </v-list-item-content>

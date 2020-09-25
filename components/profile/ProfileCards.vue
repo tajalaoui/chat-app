@@ -1,5 +1,5 @@
 <template>
-  <v-form>
+  <v-form @submit.prevent="saveInfos">
     <v-list class="mt-5" three-line subheader>
       <v-row>
         <v-col class="ml-auto mr-3" cols="6">
@@ -7,7 +7,7 @@
             class="save-edit"
             v-if="!isEdit"
             id="edit-btn"
-            @click="editBehavior(index)"
+            @click="editInfos()"
             color="primary"
             large
             >Edit</v-btn
@@ -16,7 +16,7 @@
             class="save-edit"
             v-if="isEdit"
             id="save-btn"
-            @click="isEdit = !isEdit"
+            type="submit"
             color="primary"
             large
             >Save</v-btn
@@ -37,7 +37,7 @@
                   filled
                   auto-grow
                   v-if="isEdit"
-                  :value="profile.subtitle"
+                  v-model="profile.subtitle"
                 >
                 </v-textarea>
 
@@ -77,8 +77,15 @@ export default {
     ],
   }),
   methods: {
-    editBehavior(index) {
+    editInfos() {
       this.isEdit = true
+    },
+    async saveInfos() {
+      await this.$axios.patch(
+        '/saveprofileinfo',
+        this.$store.state.user.username
+      )
+      this.isEdit = false
     },
   },
 }

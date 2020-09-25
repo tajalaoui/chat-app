@@ -23,6 +23,7 @@
                   v-model="userInfo.username"
                   label="Username"
                   required
+                  :rules="validation.username"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -30,6 +31,7 @@
                   v-model="userInfo.email"
                   label="Email"
                   required
+                  :rules="validation.email"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -41,6 +43,7 @@
                   @click:append="showPassword = !showPassword"
                   :counter="10"
                   required
+                  :rules="validation.password"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -52,6 +55,7 @@
                   @click:append="showConfirmPassword = !showConfirmPassword"
                   :counter="10"
                   required
+                  :rules="validation.confirmPassword"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -98,14 +102,35 @@ export default {
     showConfirmPassword: false,
     countries: ['Morocco', 'United Kingdom'],
     signupModal: false,
+    validation: {
+      username: [
+        (v) => !!v || 'Username is required',
+        (v) =>
+          (v && v.length <= 11) || 'Username must be less than 11 characters',
+      ],
+      email: [
+        (v) => !!v || 'E-mail is required',
+        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+      ],
+      password: [
+        (v) => !!v || 'Password is required',
+        (v) =>
+          (v && v.length <= 13) || 'Subject must be less than 13 characters',
+      ],
+      confirmPassword: [
+        (v) => !!v || 'Password confirmation is required',
+        (v) =>
+          (v && v.length <= 13) || 'Password must be less than 13 characters',
+        // (v) => v !== this.password || 'no match'
+      ],
+    },
   }),
-
   methods: {
     async validate() {
       try {
         await this.$store.dispatch('register', this.userInfo)
-      } catch (err) {
-        console.log('Signup modal error')
+      } catch (error) {
+        res.status(400).send(error)
       }
     },
     submitForm() {},

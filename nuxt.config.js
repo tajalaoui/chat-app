@@ -51,7 +51,11 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: ['@/plugins/fontawesome.js', '@/plugins/auth.js'],
+  plugins: [
+    // todo to check if client mode is the right one
+    { src: '@/plugins/auth.js', mode: 'client' },
+    '@/plugins/fontawesome.js',
+  ],
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -74,7 +78,8 @@ export default {
   /*
    ** Nuxt.js dev-modules
    */
-  buildModules: ['@nuxtjs/vuetify'],
+  buildModules: ['@nuxtjs/vuetify', '@nuxtjs/dotenv'],
+
   /*
    ** Nuxt.js modules
    */
