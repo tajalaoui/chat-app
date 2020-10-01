@@ -1,6 +1,7 @@
 <template>
   <v-row justify="center">
     <v-dialog
+      v-if="$device.isMobile"
       v-model="msgDialog"
       fullscreen
       persistent

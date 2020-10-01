@@ -9,13 +9,15 @@ const userSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    required: [true, 'Username is required'],
+    required: true,
     trim: true,
+    min: 5,
+    max: 11,
   },
   email: {
     type: String,
     unique: true,
-    required: [true, 'Email is required'],
+    required: true,
     trim: true,
     lowercase: true,
     validate(value) {
@@ -38,13 +40,14 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: [true, 'Password is required'],
     trim: true,
-    minlength: 7,
+    min: 5,
+    max: 13,
   },
   country: {
     type: String,
     required: [true, 'Country is required'],
   },
-  // ! To switch from age to birthday only
+  // TODO switch from age to birthday only
   birthday: {
     type: String,
     // required: true,
@@ -63,7 +66,7 @@ userSchema.methods.generateAuthToken = function () {
   return token
 }
 
-// todo add to async functions try and catch blocks
+// TODO add to async functions try and catch blocks
 userSchema.statics.findByCredentials = async (givenEmail, givenPassword) => {
   const errorMessage =
     "The email address or password that you've entered doesn't match any account."

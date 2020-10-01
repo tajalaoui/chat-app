@@ -7,18 +7,18 @@
             class="save-edit"
             v-if="!isEdit"
             id="edit-btn"
-            @click="editInfos()"
             color="primary"
             large
+            @click="editInfos"
             >Edit</v-btn
           >
           <v-btn
             class="save-edit"
             v-if="isEdit"
             id="save-btn"
-            type="submit"
             color="primary"
             large
+            type="submit"
             >Save</v-btn
           >
         </v-col>
@@ -81,10 +81,15 @@ export default {
       this.isEdit = true
     },
     async saveInfos() {
-      await this.$axios.patch(
-        '/saveprofileinfo',
-        this.$store.state.user.username
-      )
+      const userId = this.$store.state.auth.user.id
+      const profileInfo = this.profileInfo
+
+      const data = {
+        userId,
+        profileInfo,
+      }
+
+      await this.$axios.patch('/saveprofileinfo', data)
       this.isEdit = false
     },
   },

@@ -67,7 +67,7 @@ export default {
   methods: {
     async validate() {
       try {
-        await this.$store.dispatch('login', this.userInfo)
+        await this.$store.dispatch('auth/login', this.userInfo)
       } catch (error) {
         res.status(400).send(error)
       }

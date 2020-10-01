@@ -4,15 +4,16 @@ export const state = () => ({
 })
 
 export const mutations = {
-  SET_USER_DATA(state, userData) {
+  SET_USER_DATA(state, jwtData) {
     state.isAuthenticated = true
-    state.user = userData
+    state.user = jwtData
 
-    localStorage.setItem('user', JSON.stringify(userData))
+    // TODO Replace it by cookies here
+    localStorage.setItem('user', JSON.stringify(jwtData))
 
     this.$axios.defaults.headers.common[
       'Authorization'
-    ] = `Bearer ${userData.token}`
+    ] = `Bearer ${jwtData.token}`
 
     this.$router.push('/')
   },
@@ -23,6 +24,7 @@ export const mutations = {
     localStorage.removeItem('user')
 
     this.$axios.defaults.headers.common['Authorization'] = null
+
     this.$router.push('/welcome')
   },
 }
@@ -43,7 +45,10 @@ export const actions = {
       commit('SET_USER_DATA', data)
     })
   },
-  logout({ commit }) {
-    commit('CLEAR_USER_DATA')
+}
+
+export const getters = {
+  getIsAuthenticated(state) {
+    return !!state.user
   },
 }

@@ -54,6 +54,7 @@ export default {
   plugins: [
     // todo to check if client mode is the right one
     { src: '@/plugins/auth.js', mode: 'client' },
+    // '@/plugins/auth.js',
     '@/plugins/fontawesome.js',
   ],
   /*

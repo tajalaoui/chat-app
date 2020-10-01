@@ -1,19 +1,12 @@
 const express = require('express')
 const router = new express.Router()
+// TODO Remove body
 const bodyParser = require('body-parser')
+
+// * Db model
 const User = require('../model/user')
 
 router.use(bodyParser.json())
-
-const handleErrors = (error) => {
-  // Extracting properties from errors object values.
-  Object.values(error.errors).forEach(({ properties }) => {
-    const { message } = properties
-    console.log(message)
-    // It does extract the errors but not return it.
-    return message
-  })
-}
 
 router.post('/register', async (req, res) => {
   try {
@@ -23,13 +16,15 @@ router.post('/register', async (req, res) => {
     await user.save()
 
     const token = await user.generateAuthToken()
+    const cookie = await res.cookie('jwt', token, { maxAge: 10000 })
+
+    console.log(cookie)
 
     const { id } = user
 
     res.status(200).json({ id, token })
   } catch (e) {
-    const errors = handleErrors(e)
-    res.status(400).json({ error: errors })
+    res.status(400).json({ error: e })
   }
 })
 
@@ -40,21 +35,15 @@ router.post('/login', async (req, res) => {
     const user = await User.findByCredentials(email, password)
 
     const token = await user.generateAuthToken()
+    const cookie = await res.cookie('jwt', token, { maxAge: 10000 })
+
+    console.log(cookie)
 
     const { id } = user
 
     res.status(200).json({ id, token })
   } catch (e) {
-    const errors = handleErrors(e)
-    res.status(400).json(errors)
-  }
-})
-
-router.patch('/saveprofileinfo', async (req, res) => {
-  try {
-    console.log(req.body)
-  } catch (e) {
-    res.status(400).json(e)
+    res.status(400).json({ error: e })
   }
 })
 

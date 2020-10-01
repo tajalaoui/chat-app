@@ -16,22 +16,22 @@
       </v-card-title>
       <v-card-text>
         <v-container>
-          <v-form @submit.prevent="validate" ref="form">
+          <v-form @submit.prevent="validate" v-model="valid" ref="form">
             <v-row
               ><v-col cols="6">
                 <v-text-field
                   v-model="userInfo.username"
                   label="Username"
-                  required
-                  :rules="validation.username"
+                  counter="11"
+                  :rules="rules.username"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
                 <v-text-field
                   v-model="userInfo.email"
+                  type="email"
                   label="Email"
-                  required
-                  :rules="validation.email"
+                  :rules="rules.email"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -41,9 +41,8 @@
                   :type="showPassword ? 'text' : 'password'"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="showPassword = !showPassword"
-                  :counter="10"
-                  required
-                  :rules="validation.password"
+                  counter="13"
+                  :rules="rules.password"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -53,9 +52,8 @@
                   :type="showConfirmPassword ? 'text' : 'password'"
                   :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="showConfirmPassword = !showConfirmPassword"
-                  :counter="10"
-                  required
-                  :rules="validation.confirmPassword"
+                  counter="13"
+                  :rules="rules.confirmPassword"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
@@ -68,14 +66,18 @@
                   :items="countries"
                   label="Country"
                   placeholder="Select..."
-                  required
+                  :rules="rules.country"
                 ></v-autocomplete>
               </v-col>
               <v-col>
                 <v-card-actions>
                   <v-spacer></v-spacer>
                   <v-btn @click="signupModal = false">Cancel</v-btn>
-                  <v-btn class="white--text" color="primary" type="submit"
+                  <v-btn
+                    class="white--text"
+                    color="primary"
+                    type="submit"
+                    :disabled="!valid"
                     >Create Account</v-btn
                   >
                 </v-card-actions>
@@ -98,42 +100,46 @@ export default {
       confirmPassword: null,
       country: null,
     },
+    countries: ['Morocco', 'United Kingdom'],
     showPassword: false,
     showConfirmPassword: false,
-    countries: ['Morocco', 'United Kingdom'],
     signupModal: false,
-    validation: {
+    valid: false,
+    rules: {
       username: [
         (v) => !!v || 'Username is required',
-        (v) =>
-          (v && v.length <= 11) || 'Username must be less than 11 characters',
+        (v) => (v && v.length <= 11) || 'Name must be less than 11 characters',
+        (v) => (v && v.length >= 5) || 'Name must be more than 5+ characters',
       ],
       email: [
-        (v) => !!v || 'E-mail is required',
-        (v) => /.+@.+\..+/.test(v) || 'E-mail must be valid',
+        (v) => !!v || 'Email is required',
+        (v) => /.+@.+/.test(v) || 'E-mail must be valid',
       ],
       password: [
         (v) => !!v || 'Password is required',
-        (v) =>
-          (v && v.length <= 13) || 'Subject must be less than 13 characters',
+        (v) => (v && v.length >= 5) || 'Password must have 5+ characters',
+        (v) => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
+        (v) => /(?=.*\d)/.test(v) || 'Must have one number',
       ],
       confirmPassword: [
         (v) => !!v || 'Password confirmation is required',
-        (v) =>
-          (v && v.length <= 13) || 'Password must be less than 13 characters',
-        // (v) => v !== this.password || 'no match'
+        // (v) => v != userInfo.confirmPassword || 'Password must match',
       ],
+      country: [(v) => !!v || 'Selection of country is required'],
     },
   }),
+
   methods: {
-    async validate() {
+    validate() {
+      this.submitForm()
+    },
+    async submitForm() {
       try {
-        await this.$store.dispatch('register', this.userInfo)
+        await this.$store.dispatch('auth/register', this.userInfo)
       } catch (error) {
         res.status(400).send(error)
       }
     },
-    submitForm() {},
   },
 }
 </script>

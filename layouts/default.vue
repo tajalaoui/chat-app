@@ -69,7 +69,7 @@
 
 <script>
 export default {
-  // middleware: 'auth',
+  middleware: 'auth',
   data: () => ({
     items: [
       { title: 'Browse Profiles', to: '/', icon: 'search' },
@@ -80,7 +80,7 @@ export default {
   }),
   methods: {
     logout() {
-      this.$store.dispatch('logout')
+      this.$store.commit('auth/CLEAR_USER_DATA')
     },
   },
 }

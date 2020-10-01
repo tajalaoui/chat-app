@@ -1,5 +1,6 @@
-export default function ({ store }) {
-  if (!store.state.isAuthenticated) {
-    store.dispatch('logout')
+export default function ({ store, redirect }) {
+  if (!store.getters['auth/getIsAuthenticated']) {
+    console.log('not logged in')
+    return redirect('/welcome')
   }
 }
