@@ -8,8 +8,14 @@ export const mutations = {
     state.isAuthenticated = true
     state.user = jwtData
 
-    // TODO Replace it by cookies here
-    localStorage.setItem('user', JSON.stringify(jwtData))
+    // * Dev
+    this.$cookies.set('user', jwtData)
+
+    // * Prod
+    // this.$cookies.set('user', jwtData, {
+    //   sameSite: Strict,
+    //   secure: true,
+    // })
 
     this.$axios.defaults.headers.common[
       'Authorization'
@@ -21,7 +27,7 @@ export const mutations = {
     state.user = null
     state.isAuthenticated = false
 
-    localStorage.removeItem('user')
+    this.$cookies.remove('user')
 
     this.$axios.defaults.headers.common['Authorization'] = null
 

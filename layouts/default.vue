@@ -52,8 +52,8 @@
             <icon :icon="['fas', 'power-off']" />
           </v-list-item-icon>
 
-          <v-list-item-content>
-            <v-list-item-title @click="logout">Log Out</v-list-item-title>
+          <v-list-item-content @click="logout">
+            <v-list-item-title>Log Out</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>

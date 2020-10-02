@@ -90,6 +90,7 @@ export default {
     '@nuxtjs/style-resources',
     '@nuxtjs/device',
     'nuxt-webfontloader',
+    'cookie-universal-nuxt',
   ],
 
   /*

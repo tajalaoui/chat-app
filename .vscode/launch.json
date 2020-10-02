@@ -8,7 +8,7 @@
       "skipFiles": ["<node-internals>/**"],
       "url": "http://localhost:3000",
       "webRoot": "${workspaceFolder}",
-      "program": "${workspaceFolder}/server/index.js"
+      // "program": "${workspaceFolder}/server/index.js"
     },
     {
       "type": "node-terminal",

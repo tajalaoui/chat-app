@@ -8,7 +8,7 @@ require('dotenv').config()
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    unique: true,
+    // unique: true,
     required: true,
     trim: true,
     min: 5,
@@ -16,7 +16,7 @@ const userSchema = new mongoose.Schema({
   },
   email: {
     type: String,
-    unique: true,
+    // unique: true,
     required: true,
     trim: true,
     lowercase: true,
@@ -67,17 +67,17 @@ userSchema.methods.generateAuthToken = function () {
 }
 
 // TODO add to async functions try and catch blocks
-userSchema.statics.findByCredentials = async (givenEmail, givenPassword) => {
+userSchema.statics.findByCredentials = async (userEmail, userPassword) => {
   const errorMessage =
     "The email address or password that you've entered doesn't match any account."
 
-  const user = await User.findOne({ email: givenEmail })
+  const user = await User.findOne({ email: userEmail })
 
   if (!user) {
     throw new Error(errorMessage)
   }
 
-  const isMatch = await bcrypt.compare(givenPassword, user.password)
+  const isMatch = await bcrypt.compare(userPassword, user.password)
 
   if (!isMatch) {
     throw new Error(errorMessage)
@@ -86,7 +86,7 @@ userSchema.statics.findByCredentials = async (givenEmail, givenPassword) => {
   return user
 }
 
-userSchema.statics.checkDuplicateEmail = async (givenEmail) => {
+userSchema.statics.checkDuplication = async (givenEmail) => {
   const user = await User.findOne({ email: givenEmail })
 
   if (user) {
@@ -95,6 +95,17 @@ userSchema.statics.checkDuplicateEmail = async (givenEmail) => {
 
   return user
 }
+
+// userSchema.statics.checkDuplication = async (userEmail, userUsername) => {
+//   const mail = await User.findOne({ email: userEmail })
+//   const username = await User.findOne({ username: userUsername })
+
+//   if (mail || username) {
+//     throw new Error('Duplication detected')
+//   }
+
+//   return user
+// }
 
 // * Middlewear to hash password before saving or updating
 // Use es5 function since we need (this).
