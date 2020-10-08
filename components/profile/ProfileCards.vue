@@ -81,16 +81,22 @@ export default {
       this.isEdit = true
     },
     async saveInfos() {
-      const userId = this.$store.state.auth.user.id
-      const profileInfo = this.profileInfo
+      try {
+        this.$nuxt.$loading.start()
 
-      const data = {
-        userId,
-        profileInfo,
-      }
+        const userId = this.$store.state.auth.user.id
+        const profileInfo = this.profileInfo
 
-      await this.$axios.patch('/saveprofileinfo', data)
-      this.isEdit = false
+        const data = {
+          userId,
+          profileInfo,
+        }
+
+        await this.$axios.patch('/saveprofileinfo', data)
+        this.isEdit = false
+
+        this.$nuxt.$loading.finish()
+      } catch (e) {}
     },
   },
 }

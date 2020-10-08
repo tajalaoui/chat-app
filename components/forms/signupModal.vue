@@ -41,23 +41,59 @@
                   :type="showPassword ? 'text' : 'password'"
                   :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                   @click:append="showPassword = !showPassword"
-                  counter="13"
+                  counter="17"
                   :rules="rules.password"
                 ></v-text-field>
               </v-col>
               <v-col cols="6">
-                <v-text-field
-                  v-model="userInfo.confirmPassword"
-                  label="Confirm Password"
-                  :type="showConfirmPassword ? 'text' : 'password'"
-                  :append-icon="showConfirmPassword ? 'mdi-eye' : 'mdi-eye-off'"
-                  @click:append="showConfirmPassword = !showConfirmPassword"
-                  counter="13"
-                  :rules="rules.confirmPassword"
-                ></v-text-field>
+                <v-select
+                  v-model="userInfo.gender"
+                  :items="gender"
+                  label="Gender"
+                ></v-select>
               </v-col>
+
+              <!-- Birthday -->
               <v-col cols="6">
-                <!-- Birthday component -->
+                <v-menu
+                  ref="menu"
+                  v-model="menu"
+                  :close-on-content-click="false"
+                  :return-value.sync="userInfo.birthday"
+                  transition="scale-transition"
+                  offset-y
+                  max-width="290px"
+                  min-width="290px"
+                >
+                  <template v-slot:activator="{ on, attrs }">
+                    <v-text-field
+                      v-model="userInfo.birthday"
+                      label="Picker in menu"
+                      prepend-icon="mdi-calendar"
+                      readonly
+                      v-bind="attrs"
+                      v-on="on"
+                    ></v-text-field>
+                  </template>
+                  <v-date-picker
+                    v-model="userInfo.birthday"
+                    type="month"
+                    no-title
+                    scrollable
+                  >
+                    <v-spacer></v-spacer>
+                    <v-btn text color="primary" @click="menu = false">
+                      Cancel
+                    </v-btn>
+                    <v-btn
+                      text
+                      color="primary"
+                      @click="$refs.menu.save(userInfo.birthday)"
+                    >
+                      OK
+                    </v-btn>
+                  </v-date-picker>
+                </v-menu>
               </v-col>
               <v-col cols="6"
                 ><v-autocomplete
@@ -69,6 +105,7 @@
                   :rules="rules.country"
                 ></v-autocomplete>
               </v-col>
+
               <v-col>
                 <v-card-actions>
                   <v-spacer></v-spacer>
@@ -97,14 +134,17 @@ export default {
       username: null,
       email: null,
       password: null,
-      confirmPassword: null,
+      gender: null,
+      birthday: new Date().toISOString().substr(0, 7),
       country: null,
     },
+    gender: ['Male', 'Female'],
     countries: ['Morocco', 'United Kingdom'],
     showPassword: false,
-    showConfirmPassword: false,
     signupModal: false,
     valid: false,
+    // Birthday
+    menu: false,
     rules: {
       username: [
         (v) => !!v || 'Username is required',
@@ -121,10 +161,6 @@ export default {
         (v) => /(?=.*[A-Z])/.test(v) || 'Must have one uppercase character',
         (v) => /(?=.*\d)/.test(v) || 'Must have one number',
       ],
-      confirmPassword: [
-        (v) => !!v || 'Password confirmation is required',
-        // (v) => v != userInfo.confirmPassword || 'Password must match',
-      ],
       country: [(v) => !!v || 'Selection of country is required'],
     },
   }),
@@ -135,7 +171,11 @@ export default {
     },
     async submitForm() {
       try {
+        this.$nuxt.$loading.start()
+
         await this.$store.dispatch('auth/register', this.userInfo)
+
+        this.$nuxt.$loading.finish()
       } catch (error) {
         res.status(400).send(error)
       }

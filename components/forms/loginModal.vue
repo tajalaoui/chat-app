@@ -67,9 +67,13 @@ export default {
   methods: {
     async validate() {
       try {
+        this.$nuxt.$loading.start()
+
         await this.$store.dispatch('auth/login', this.userInfo)
+
+        this.$nuxt.$loading.finish()
       } catch (error) {
-        res.status(400).send(error)
+        // TODO Handle errors
       }
     },
   },

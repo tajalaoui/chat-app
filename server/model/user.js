@@ -5,49 +5,52 @@ const jwt = require('jsonwebtoken')
 const { model } = require('mongoose')
 require('dotenv').config()
 
+const Profile = require('./profile')
+
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
-    // unique: true,
-    required: true,
+    unique: true,
+    // required: true,
     trim: true,
     min: 5,
     max: 11,
   },
   email: {
     type: String,
-    // unique: true,
-    required: true,
+    unique: true,
+    // required: true,
     trim: true,
     lowercase: true,
-    validate(value) {
-      if (!validator.isEmail(value)) {
-        throw new Error('Email is invalid')
-      }
-    },
+    // validate(value) {
+    //   if (!validator.isEmail(value)) {
+    //     throw new Error('Email is invalid')
+    //   }
+    // },
   },
-  age: {
+  birthday: {
     type: Number,
-    default: 0,
-    // required: [true, 'Birthday is required'],
+    // required: true,
     // validate(value) {
     //   if (value <= 15) {
     //     throw new Error('Age must be equal or greather than 15')
     //   }
     // },
   },
+  gender: {
+    type: String,
+  },
   password: {
     type: String,
-    required: [true, 'Password is required'],
+    // required: true,
     trim: true,
     min: 5,
-    max: 13,
+    max: 17,
   },
   country: {
     type: String,
-    required: [true, 'Country is required'],
+    // required: true,
   },
-  // TODO switch from age to birthday only
   birthday: {
     type: String,
     // required: true,
@@ -56,7 +59,27 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  // profile: [Profile],
+  profileData: [
+    {
+      _id: false,
+      title: {
+        type: String,
+        trim: true,
+      },
+      subtitle: {
+        type: String,
+        trim: true,
+      },
+    },
+  ],
 })
+
+// userSchema.virtual('profile', {
+//   ref: 'Profile',
+//   localField: '_id',
+//   foreignField: 'user',
+// })
 
 // Generating token after registering OR login
 userSchema.methods.generateAuthToken = function () {

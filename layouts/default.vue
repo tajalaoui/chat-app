@@ -29,6 +29,7 @@
         </v-avatar>
         <v-list-item-content class="username mb-sm-and-up-3 hidden-sm-and-down">
           <v-list-item-title class="title">
+            <!-- <h5>{{ user.username }}</h5> -->
             <h5>Tajeddine</h5>
           </v-list-item-title>
         </v-list-item-content>
@@ -68,6 +69,8 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   middleware: 'auth',
   data: () => ({
@@ -78,6 +81,9 @@ export default {
       { title: 'Settings', to: '/settings', icon: 'cog' },
     ],
   }),
+  computed: {
+    ...mapState('auth', ['user']),
+  },
   methods: {
     logout() {
       this.$store.commit('auth/CLEAR_USER_DATA')

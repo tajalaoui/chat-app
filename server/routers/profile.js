@@ -1,22 +1,41 @@
 const express = require('express')
 const router = new express.Router()
 const bodyParser = require('body-parser')
+const { Mongoose } = require('mongoose')
+
+// * Db model
+const User = require('../model/user')
 
 router.use(bodyParser.json())
 
-// * Db model
-const Profile = require('../model/profile')
+router.patch('/saveprofileinfo', async (req, res) => {
+  const { userId, profileInfo } = req.body
 
-router.patch('/saveprofileinfo', (req, res) => {
-  console.log(req.body)
-  //   const profile = new Profile({
-  //     ...req.body,
-  //     // owner: req.body.userId,
-  //   })
-  //   try {
-  //   } catch (e) {
-  //     res.status(400).json(e)
-  //   }
+  console.log(...profileInfo)
+
+  try {
+    //   const profile = new User({
+    //     profile: [
+    //       {
+    //         owner: userId,
+    //         profileData: profileInfo,
+    //         // title: profileInfo[{ ...title }],
+    //         // subtitle: profileInfo[{ ...subtitle }],
+    //       },
+    //     ],
+    //   })
+
+    const profile = await User.findByIdAndUpdate(userId, {
+      profileData: [{ title: 'hola', subtitle: 'world' }],
+    })
+    await profile.save()
+    res.send()
+  } catch (e) {
+    res.status(400).json(e)
+  }
+  // } finally {
+  //   Mongoose.connection.close()
+  // }
 })
 
 module.exports = router

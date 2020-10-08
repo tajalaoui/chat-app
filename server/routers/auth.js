@@ -1,5 +1,6 @@
 const express = require('express')
 const router = new express.Router()
+const mongoose = require('mongoose')
 // TODO Remove body
 const bodyParser = require('body-parser')
 
@@ -13,6 +14,8 @@ router.post('/register', async (req, res) => {
 
   try {
     const user = new User(req.body)
+
+    // TODO Add username to checkDuplication()
     await User.checkDuplication(email)
 
     await user.save()
@@ -36,11 +39,13 @@ router.post('/login', async (req, res) => {
 
     const token = await user.generateAuthToken()
 
-    const { id } = user
+    const { id, username } = user
 
-    res.status(200).json({ id, token })
+    res.status(200).json({ id, token, username })
   } catch (e) {
     res.status(400).json({ error: e })
+  } finally {
+    mongoose.connection.close()
   }
 })
 

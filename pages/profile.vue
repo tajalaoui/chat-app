@@ -6,7 +6,7 @@
     <v-row>
       <v-col cols="12" class="account-header">
         <h1 id="username">Tajeddine</h1>
-        <v-subheader style="height: 13px;" id="age-location"
+        <v-subheader style="height: 13px" id="age-location"
           >23, Marrakech</v-subheader
         >
       </v-col>

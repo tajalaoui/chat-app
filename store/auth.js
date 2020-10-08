@@ -1,25 +1,31 @@
 export const state = () => ({
   isAuthenticated: false,
-  user: null,
+  id: null,
+  token: null,
+  username: null,
 })
 
 export const mutations = {
-  SET_USER_DATA(state, jwtData) {
+  SET_USER_DATA(state, data) {
+    let { id, token, username } = data
+
     state.isAuthenticated = true
-    state.user = jwtData
+    state.id = id
+    state.token = token
+    state.username = username
 
     // * Dev
-    this.$cookies.set('user', jwtData)
+    this.$cookies.set('user', data)
 
     // * Prod
-    // this.$cookies.set('user', jwtData, {
+    // this.$cookies.set('user', data, {
     //   sameSite: Strict,
     //   secure: true,
     // })
 
     this.$axios.defaults.headers.common[
       'Authorization'
-    ] = `Bearer ${jwtData.token}`
+    ] = `Bearer ${token}`
 
     this.$router.push('/')
   },
