@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { model } = require('mongoose')
+const { model, Schema } = require('mongoose')
 require('dotenv').config()
 
 const Profile = require('./profile')
@@ -59,20 +59,23 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  // profile: [Profile],
-  profileData: [
-    {
-      _id: false,
-      title: {
-        type: String,
-        trim: true,
-      },
-      subtitle: {
-        type: String,
-        trim: true,
-      },
-    },
-  ],
+  profileData: {
+    // _id: false,
+    // // * This one
+    // profilePicture: {
+    //   type: Buffer,
+    // },
+    // title: {
+    //   type: String,
+    //   trim: true,
+    // },
+    // subtitle: {
+    //   type: String,
+    //   trim: true,
+    // },
+    // type: Schema.Types.ObjectId,
+    // ref: 'Profile',
+  },
 })
 
 // userSchema.virtual('profile', {

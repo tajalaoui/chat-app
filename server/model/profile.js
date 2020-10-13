@@ -2,11 +2,6 @@ const { ObjectID } = require('mongodb')
 const mongoose = require('mongoose')
 
 const profile = new mongoose.Schema({
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'User',
-    // required: true,
-  },
   // profileData: [],
   title: {
     type: String,
@@ -18,8 +13,8 @@ const profile = new mongoose.Schema({
   },
 })
 
-// const Profile = mongoose.model('profile', profile)
+const Profile = mongoose.model('Profile', profile)
 
-// module.exports = Profile
+module.exports = Profile
 
-module.exports = profile
+

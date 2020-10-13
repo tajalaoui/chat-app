@@ -1,13 +1,9 @@
 const express = require('express')
 const router = new express.Router()
 const mongoose = require('mongoose')
-// TODO Remove body
-const bodyParser = require('body-parser')
 
 // * Db model
 const User = require('../model/user')
-
-router.use(bodyParser.json())
 
 router.post('/register', async (req, res) => {
   const { email, username } = req.body
@@ -44,9 +40,10 @@ router.post('/login', async (req, res) => {
     res.status(200).json({ id, token, username })
   } catch (e) {
     res.status(400).json({ error: e })
-  } finally {
-    mongoose.connection.close()
   }
+  // } finally {
+  //   mongoose.connection.close()
+  // }
 })
 
 module.exports = router

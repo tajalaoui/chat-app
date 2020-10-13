@@ -84,7 +84,7 @@ export default {
       try {
         this.$nuxt.$loading.start()
 
-        const userId = this.$store.state.auth.user.id
+        const userId = this.$store.state.auth.id
         const profileInfo = this.profileInfo
 
         const data = {
@@ -92,7 +92,8 @@ export default {
           profileInfo,
         }
 
-        await this.$axios.patch('/saveprofileinfo', data)
+        await this.$axios.patch('/profile', data)
+
         this.isEdit = false
 
         this.$nuxt.$loading.finish()
