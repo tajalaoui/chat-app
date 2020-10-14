@@ -23,13 +23,12 @@
             ><img
               class="title"
               id="avatar"
-              src="/profile-icon.png"
+              src="/avatar.png"
               alt="nav-profile-img"
           /></nuxt-link>
         </v-avatar>
         <v-list-item-content class="username mb-sm-and-up-3 hidden-sm-and-down">
           <v-list-item-title class="title">
-            <!-- <h5>{{ user.username }}</h5> -->
             <h5>Tajeddine</h5>
           </v-list-item-title>
         </v-list-item-content>

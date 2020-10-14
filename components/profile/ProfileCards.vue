@@ -3,24 +3,26 @@
     <v-list class="mt-5" three-line subheader>
       <v-row>
         <v-col class="ml-auto mr-3" cols="6">
-          <v-btn
-            class="save-edit"
-            v-if="!isEdit"
-            id="edit-btn"
-            color="primary"
-            large
-            @click="editInfos"
-            >Edit</v-btn
-          >
-          <v-btn
-            class="save-edit"
-            v-if="isEdit"
-            id="save-btn"
-            color="primary"
-            large
-            type="submit"
-            >Save</v-btn
-          >
+          <transition name="fade">
+            <v-btn
+              class="save-edit"
+              v-if="!isEdit"
+              id="edit-btn"
+              color="primary"
+              large
+              @click="editInfos"
+              >Edit</v-btn
+            >
+            <v-btn
+              class="save-edit"
+              v-if="isEdit"
+              id="save-btn"
+              color="primary"
+              large
+              type="submit"
+              >Save</v-btn
+            >
+          </transition>
         </v-col>
       </v-row>
 
@@ -112,5 +114,14 @@ input:hover {
   // width: 100px;
   display: block;
   margin-left: auto;
+}
+
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 5s;
+}
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
 }
 </style>

@@ -2,16 +2,13 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { model, Schema } = require('mongoose')
 require('dotenv').config()
-
-const Profile = require('./profile')
 
 const userSchema = new mongoose.Schema({
   username: {
     type: String,
     unique: true,
-    // required: true,
+    required: true,
     trim: true,
     min: 5,
     max: 11,
@@ -19,18 +16,18 @@ const userSchema = new mongoose.Schema({
   email: {
     type: String,
     unique: true,
-    // required: true,
+    required: true,
     trim: true,
     lowercase: true,
-    // validate(value) {
-    //   if (!validator.isEmail(value)) {
-    //     throw new Error('Email is invalid')
-    //   }
-    // },
+    validate(value) {
+      if (!validator.isEmail(value)) {
+        throw new Error('Email is invalid')
+      }
+    },
   },
   birthday: {
     type: Number,
-    // required: true,
+    required: true,
     // validate(value) {
     //   if (value <= 15) {
     //     throw new Error('Age must be equal or greather than 15')
@@ -42,47 +39,30 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    // required: true,
+    required: true,
     trim: true,
     min: 5,
     max: 17,
   },
   country: {
     type: String,
-    // required: true,
+    required: true,
   },
   birthday: {
     type: String,
-    // required: true,
+    required: true,
   },
   isAdmin: {
     type: Boolean,
     default: false,
   },
-  profileData: {
-    // _id: false,
-    // // * This one
-    // profilePicture: {
-    //   type: Buffer,
-    // },
-    // title: {
-    //   type: String,
-    //   trim: true,
-    // },
-    // subtitle: {
-    //   type: String,
-    //   trim: true,
-    // },
-    // type: Schema.Types.ObjectId,
-    // ref: 'Profile',
-  },
+  profileData: [
+    {
+      title: String,
+      subtitle: String,
+    },
+  ],
 })
-
-// userSchema.virtual('profile', {
-//   ref: 'Profile',
-//   localField: '_id',
-//   foreignField: 'user',
-// })
 
 // Generating token after registering OR login
 userSchema.methods.generateAuthToken = function () {

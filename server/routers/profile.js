@@ -1,54 +1,28 @@
 const express = require('express')
 const router = new express.Router()
-
-// const { Mongoose } = require('mongoose')
-
-// * Db model
 const User = require('../model/user')
 
 router.patch('/profile', async (req, res) => {
   const { userId, profileInfo } = req.body
 
-  let profileData = []
-
-  for (const profile of profileInfo) {
-    profileData.push(profile)
-    // console.log(profile)
-    console.log(profileData)
-  }
-
   try {
-    const profile = new Profile({
-      profile: [
-        {
+    const profileUser = await User.findByIdAndUpdate(
+      userId,
+      {
+        $set: {
           profileData: profileInfo,
-          // title: profileInfo[{ ...title }],
-          // subtitle: profileInfo[{ ...subtitle }],
         },
-      ],
-    })
+      },
+      {
+        new: true,
+      }
+    )
 
-    await profile.save()
-
-    const profileUser = await User.findByIdAndUpdate(userId, {
-      profileData: [
-        {
-          title: 'hola',
-          subtitle: 'world!!',
-          profileData: mongoose.Types.ObjectId(profile._id),
-        },
-      ],
-    })
-
-    await profileUser.save()
-
-    res.send(profile)
+    res.send(profileUser)
   } catch (e) {
+    console.log(e)
     res.status(400).json(e)
   }
-  // } finally {
-  //   Mongoose.connection.close()
-  // }
 })
 
 // * Test

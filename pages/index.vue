@@ -67,13 +67,17 @@
     <v-divider></v-divider>
 
     <v-row class="mt-6">
-      <v-col class="mt-5" cols="12" md="4">
-        <v-card class="mx-auto" max-width="335">
+      <v-col v-for="user in users" :key="user.id" class="mt-5" cols="12" md="3">
+        <v-card class="mx-auto" max-width="339">
           <v-img src="/desktop-bg.png" height="200px"></v-img>
 
-          <v-card-title> Tajeddine Alaoui </v-card-title>
+          <v-card-title>
+            {{ user.username }}
+            <v-card-subtitle> {{ user.birthday }} </v-card-subtitle>
+          </v-card-title>
 
-          <v-card-subtitle class="pb-0"> Morocco, Marrakech </v-card-subtitle>
+          <!-- TODO add city too -->
+          <v-card-subtitle class="pb-0"> {{ user.country }} </v-card-subtitle>
 
           <v-card-actions>
             <v-btn to="/profile" text>View Profile</v-btn>
@@ -108,8 +112,6 @@
             </v-dialog>
           </v-card-actions>
         </v-card>
-        <!-- ! Logging users -->
-        <p v-for="user in users" :key="user.id">{{ user }}</p>
       </v-col>
     </v-row>
   </v-container>
@@ -119,28 +121,13 @@
 export default {
   async asyncData({ $axios }) {
     try {
-      let response = await $axios.get('http://localhost:3000/users')
-
-      console.log(response)
-      const { users } = await response.json()
+      let users = await $axios.$get('/users')
 
       return { users }
     } catch (error) {
       console.log(error)
     }
   },
-  // async mounted() {
-  //   try {
-  //     let response = await this.$axios.get(
-  //       '/api/getusers'
-  //     )
-  //     console.log(response.data)
-
-  //     this.users = response.data
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
   data: () => ({
     users: [],
     filterProfiles: false,
@@ -151,11 +138,6 @@ export default {
     countries: ['Morocco', 'United Kingdom'],
     country: null,
   }),
-  // async mounted() {
-  //   let response = await $axios.get('/getusers')
-
-  //   this.usersData = response
-  // },
 }
 </script>
 

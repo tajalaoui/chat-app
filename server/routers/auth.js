@@ -1,6 +1,5 @@
 const express = require('express')
 const router = new express.Router()
-const mongoose = require('mongoose')
 
 // * Db model
 const User = require('../model/user')
@@ -41,9 +40,6 @@ router.post('/login', async (req, res) => {
   } catch (e) {
     res.status(400).json({ error: e })
   }
-  // } finally {
-  //   mongoose.connection.close()
-  // }
 })
 
 module.exports = router

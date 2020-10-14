@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <v-card color="primary" id="profile-img-wrapper">
-      <img class="" src="/profile-icon.png" alt="profile-img" />
+      <img class="" src="/avatar.png" alt="profile-img" />
     </v-card>
     <v-row>
       <v-col cols="12" class="account-header">

@@ -26,11 +26,6 @@ export default {
       const userId = this.$store.state.auth.id
       formData.append('userId', userId)
 
-      // const data = {
-      //   userId,
-      //   formData,
-      // }
-
       try {
         await this.$axios.post('/avatar', formData)
       } catch (error) {
