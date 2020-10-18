@@ -82,7 +82,7 @@ export default {
     editInfos() {
       this.isEdit = true
     },
-    async saveInfos() {
+     async saveInfos() {
       try {
         this.$nuxt.$loading.start()
 

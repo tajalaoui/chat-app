@@ -5,13 +5,12 @@ export default function (context) {
     return context.store.commit('auth/CLEAR_USER_DATA')
   }
 
-  const jwtData = userCookie
-
   // * To set userData in vuex
   // If the user a cookie storage we recomit it's data
-  context.store.commit('auth/SET_USER_DATA', jwtData)
+  context.store.commit('auth/SET_USER_DATA', userCookie)
 
-  // TODO Put it in middleware
+  // TODO Put it in middleware ?
+  // TODO Maybe check if errors occured redirect to a page ?
   // context.$axios.interceptors.response.use(
   //   (response) => response,
   //   (error) => {

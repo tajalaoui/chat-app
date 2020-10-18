@@ -3,16 +3,18 @@ export const state = () => ({
   id: null,
   token: null,
   username: null,
+  avatar: null,
 })
 
 export const mutations = {
   SET_USER_DATA(state, data) {
-    let { id, token, username } = data
+    let { id, token, username, avatar } = data
 
     state.isAuthenticated = true
     state.id = id
     state.token = token
     state.username = username
+    state.avatar = avatar
 
     // * Dev
     this.$cookies.set('user', data)
@@ -23,9 +25,7 @@ export const mutations = {
     //   secure: true,
     // })
 
-    this.$axios.defaults.headers.common[
-      'Authorization'
-    ] = `Bearer ${token}`
+    this.$axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
 
     this.$router.push('/')
   },

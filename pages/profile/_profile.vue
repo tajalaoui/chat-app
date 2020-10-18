@@ -12,15 +12,28 @@
       </v-col>
     </v-row>
     <section>
-      <LazyProfileCards />
+      <LazyProfileCard />
     </section>
   </v-container>
 </template>
 
+<script>
+export default {
+  // async asyncData({ $axios }) {
+  //   try {
+  //     let profile = await $axios.$get('/profile')
+  //     return { profile }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // },
+}
+</script>
+
 <style lang="scss" scoped>
 #profile-img-wrapper {
   border-radius: 5px;
-  height: 250px;
+  height: 255px;
 
   img {
     height: 225px;

@@ -56,8 +56,14 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
+  avatar: {
+    // type: String,
+    type: Buffer,
+    // default: false,
+  },
   profileData: [
     {
+      _id: false,
       title: String,
       subtitle: String,
     },

@@ -23,13 +23,14 @@
             ><img
               class="title"
               id="avatar"
-              src="/avatar.png"
+              src="/avatar-circle.svg"
               alt="nav-profile-img"
           /></nuxt-link>
         </v-avatar>
         <v-list-item-content class="username mb-sm-and-up-3 hidden-sm-and-down">
           <v-list-item-title class="title">
-            <h5>Tajeddine</h5>
+            <!-- <h5>Tajeddine</h5> -->
+            <h5>{{ username }}</h5>
           </v-list-item-title>
         </v-list-item-content>
         <div class="mb-5"></div>
@@ -81,7 +82,7 @@ export default {
     ],
   }),
   computed: {
-    ...mapState('auth', ['user']),
+    ...mapState('auth', ['username']),
   },
   methods: {
     logout() {
