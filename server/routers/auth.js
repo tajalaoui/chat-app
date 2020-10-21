@@ -17,7 +17,7 @@ router.post('/register', async (req, res) => {
 
     const token = await user.generateAuthToken()
 
-    const { id, username } = user
+    const { id, username, avatar } = user
 
     // * I removed avatar
     res.status(200).json({ id, token, username })
@@ -35,7 +35,7 @@ router.post('/login', async (req, res) => {
 
     const token = await user.generateAuthToken()
 
-    const { id, username } = user
+    const { id, username, avatar } = user
 
     // * I removed avatar
     res.status(200).json({ id, token, username })

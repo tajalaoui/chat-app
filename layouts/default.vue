@@ -73,20 +73,14 @@ import { mapState } from 'vuex'
 
 export default {
   middleware: 'auth',
-  data() {
-    return {
-      items: [
-        { title: 'Browse Profiles', to: '/', icon: 'search' },
-        { title: 'Messages', to: '/messages', icon: 'comment-dots' },
-        {
-          title: 'Profile',
-          to: `/profile/${this.$store.state.auth.id}`,
-          icon: 'user',
-        },
-        { title: 'Settings', to: '/settings', icon: 'cog' },
-      ],
-    }
-  },
+  data: () => ({
+    items: [
+      { title: 'Browse Profiles', to: '/', icon: 'search' },
+      { title: 'Messages', to: '/messages', icon: 'comment-dots' },
+      { title: 'Profile', to: '/profile', icon: 'user' },
+      { title: 'Settings', to: '/settings', icon: 'cog' },
+    ],
+  }),
   computed: {
     ...mapState('auth', ['username']),
   },

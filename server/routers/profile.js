@@ -2,21 +2,6 @@ const express = require('express')
 const router = new express.Router()
 const User = require('../model/user')
 
-router.get('/profile', async (req, res) => {
-  const { userId } = req.body
-
-  try {
-    const profileUser = await User.findById(userId)
-
-    console.log(profileUser)
-
-    res.send(profileUser)
-  } catch (e) {
-    console.log(e)
-    res.status(400).json({ error: e.message })
-  }
-})
-
 router.patch('/profile', async (req, res) => {
   const { userId, profileInfo } = req.body
 
