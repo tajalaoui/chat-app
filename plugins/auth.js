@@ -6,7 +6,7 @@ export default function (context) {
   }
 
   // * To set userData in vuex
-  // If the user a cookie storage we recomit it's data
+  // If the user have a cookie we recomit it's data
   context.store.commit('auth/SET_USER_DATA', userCookie)
 
   // TODO Put it in middleware ?

@@ -19,14 +19,19 @@
 
 <script>
 export default {
-  // async asyncData({ $axios }) {
-  //   try {
-  //     let profile = await $axios.$get('/profile')
-  //     return { profile }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
+  async asyncData({ $axios, store }) {
+    try {
+      const userId = store.state.auth.id
+      console.log(userId)
+
+      let profile = await $axios.$get('/profile', userId)
+
+      console.log(profile)
+      return { profile }
+    } catch (error) {
+      console.log(error)
+    }
+  },
 }
 </script>
 

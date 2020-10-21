@@ -56,11 +56,11 @@ const userSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  avatar: {
+  // avatar: {
     // type: String,
-    type: Buffer,
+    // type: Buffer,
     // default: false,
-  },
+  // },
   profileData: [
     {
       _id: false,
