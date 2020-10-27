@@ -29,7 +29,10 @@
         <v-card-subtitle class="pb-0"> {{ user.country }} </v-card-subtitle>
 
         <v-card-actions>
-          <v-btn to="/profile" text>View Profile</v-btn>
+          <!-- Modiefied -->
+          <nuxt-link :to="'/profile/' + user.id"
+            ><v-btn text>View Profile</v-btn></nuxt-link
+          >
           <v-dialog v-model="msgDialog" persistent width="600px">
             <template v-slot:activator="{ msg, msgAttrs }">
               <v-btn

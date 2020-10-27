@@ -2,6 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
+
 require('dotenv').config()
 
 const userSchema = new mongoose.Schema({
@@ -95,6 +96,7 @@ userSchema.statics.findByCredentials = async (userEmail, userPassword) => {
     throw new Error(errorMessage)
   }
 
+  // I modified this from user to isMatch
   return user
 }
 
@@ -125,7 +127,7 @@ userSchema.pre('save', async function (next) {
   const user = this
 
   if (user.isModified('password')) {
-    user.password = await bcrypt.hash(user.password, 8)
+    user.password = await bcrypt.hash(user.password, 9)
   }
 
   next()

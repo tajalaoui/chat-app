@@ -3,18 +3,16 @@ export const state = () => ({
   id: null,
   token: null,
   username: null,
-  avatar: null,
 })
 
 export const mutations = {
   SET_USER_DATA(state, data) {
-    let { id, token, username, avatar } = data
+    let { id, token, username } = data
 
     state.isAuthenticated = true
     state.id = id
     state.token = token
     state.username = username
-    state.avatar = avatar
 
     // * Dev
     this.$cookies.set('user', data)
@@ -44,7 +42,7 @@ export const mutations = {
 export const actions = {
   register({ commit }, credentials) {
     return this.$axios
-      .post('/register', credentials)
+      .post('/signup', credentials)
       .then(({ data }) => {
         commit('SET_USER_DATA', data)
       })

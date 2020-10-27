@@ -1,7 +1,16 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
 const cors = require('cors')
+
+// Db
 require('./db/mongoose.js')
+
+// * Activating packages
+app.use(
+  bodyParser.urlencoded({
+    extended: false,
+  })
+)
 app.use(bodyParser.json())
 app.use(cors())
 
@@ -9,6 +18,8 @@ app.use(cors())
 const AUTH = require('./routers/auth.js')
 const PROFILE = require('./routers/profile.js')
 const FETCH_USERS = require('./routers/users.js')
+
+// * Activating routes
 app.use(AUTH)
 app.use(PROFILE)
 app.use(FETCH_USERS)

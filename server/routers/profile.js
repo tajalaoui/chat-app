@@ -1,8 +1,9 @@
 const express = require('express')
 const router = new express.Router()
 const User = require('../model/user')
+const auth = require('../middleware/auth')
 
-router.get('/profile', async (req, res) => {
+router.get('/profile', auth, async (req, res) => {
   const { userId } = req.body
 
   try {
@@ -15,7 +16,7 @@ router.get('/profile', async (req, res) => {
   }
 })
 
-router.patch('/profile', async (req, res) => {
+router.patch('/profile', auth, async (req, res) => {
   const { userId, profileInfo } = req.body
 
   try {
