@@ -30,8 +30,8 @@
 
         <v-card-actions>
           <!-- Modiefied -->
-          <nuxt-link :to="'/profile/' + user.id"
-            ><v-btn text>View Profile</v-btn></nuxt-link
+          <nuxt-link :to="`/profile/${user._id}`"
+            >View Profile {{ user.id }}</nuxt-link
           >
           <v-dialog v-model="msgDialog" persistent width="600px">
             <template v-slot:activator="{ msg, msgAttrs }">

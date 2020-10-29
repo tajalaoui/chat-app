@@ -72,16 +72,41 @@
 
 <script>
 export default {
-  async asyncData({ $axios }) {
-    try {
-      let users = await $axios.$get('/users')
+  // async asyncData({ $axios }) {
+  //   try {
+  //     let users = await $axios.$get('/users')
 
-      return { users }
-    } catch (error) {
-      console.log(error)
-    }
+  //     return { users }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // },
+  async fetch() {
+    //const users = await this.$axios.$get('/users')
+    const token = this.$store.state.auth.token
+
+    console.log('token ?', token)
+
+    const users = await fetch('http://localhost:3000/users', {
+      method: 'GET',
+      //body: JSON.stringify({}),
+      headers: {
+        //'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`,
+      },
+      //credentials: 'include',
+    }).then(function (res) {
+      if (res.status >= 200 && res.status < 300) {
+        return res
+      } else {
+        console.log(res.statusText)
+      }
+    }).then(res => res.json())
+
+    this.users = users
   },
   data: () => ({
+    users: [],
     filterProfiles: false,
     minAge: null,
     maxAge: null,

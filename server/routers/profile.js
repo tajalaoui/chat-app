@@ -11,8 +11,7 @@ router.get('/profile', auth, async (req, res) => {
 
     res.send(profileUser)
   } catch (e) {
-    console.log(e)
-    res.status(400).json(e)
+    res.status(400)//.json(e)
   }
 })
 

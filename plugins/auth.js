@@ -1,13 +1,13 @@
 export default function (context) {
-  const userCookie = context.app.$cookies.get('user')
+  // const userCookie = context.app.$cookies.get('user')
+  // // Todo Maybe populate vuex from cookie using nuxtServerInit ?
+  // if (!userCookie) {
+  //   return context.store.commit('auth/CLEAR_USER_DATA')
+  // }
 
-  if (!userCookie) {
-    return context.store.commit('auth/CLEAR_USER_DATA')
-  }
-
-  // * To set userData in vuex
-  // If the user a cookie storage we recomit it's data
-  context.store.commit('auth/SET_USER_DATA', userCookie)
+  // // * To set userData in vuex
+  // // If the user a cookie storage we recomit it's data
+  // context.store.commit('auth/SET_USER_DATA', userCookie)
 
   // TODO Put it in middleware ?
   // TODO Maybe check if errors occured redirect to a page ?
