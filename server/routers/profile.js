@@ -1,29 +1,36 @@
 const express = require('express')
 const router = new express.Router()
-const User = require('../model/user')
 const auth = require('../middleware/auth')
+const User = require('../model/user')
+const Profile = require('../model/profile')
+
+// Query is for get and body for post
 
 router.get('/profile', auth, async (req, res) => {
-  const { userId } = req.body
+  const { userId } = req.query
 
   try {
-    const profileUser = await User.findById(userId)
+    const profile = await User.findById(userId).populate('Profile')
 
-    res.send(profileUser)
+    const { profileQuestions, username, birthday, country } = profile
+
+    console.log(profileQuestions, username, birthday, country)
+
+    res.json({ profileQuestions, username, birthday, country })
   } catch (e) {
-    res.status(400)//.json(e)
+    res.status(400).json(e.message)
   }
 })
 
 router.patch('/profile', auth, async (req, res) => {
-  const { userId, profileInfo } = req.body
+  const { userId, profile } = req.body
 
   try {
-    const profileUser = await User.findByIdAndUpdate(
-      userId,
+    const profile = await Profile.create(
       {
         $set: {
-          profileData: profileInfo,
+          owner: userId,
+          profileData: profile,
         },
       },
       {
@@ -31,9 +38,8 @@ router.patch('/profile', auth, async (req, res) => {
       }
     )
 
-    res.send(profileUser)
+    res.send(profile)
   } catch (e) {
-    console.log(e)
     res.status(400).json(e)
   }
 })

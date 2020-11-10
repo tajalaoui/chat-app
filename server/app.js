@@ -18,11 +18,15 @@ app.use(cors())
 const AUTH = require('./routers/auth.js')
 const PROFILE = require('./routers/profile.js')
 const FETCH_USERS = require('./routers/users.js')
+const MESSAGES = require('./routers/messages.js')
+const SETTINGS = require('./routers/settings.js')
 
 // * Activating routes
 app.use(AUTH)
 app.use(PROFILE)
 app.use(FETCH_USERS)
+app.use(MESSAGES)
+app.use(SETTINGS)
 
 const port = 3000
 

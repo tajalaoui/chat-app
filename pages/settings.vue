@@ -10,14 +10,14 @@
           My Account
         </v-tab>
 
-        <v-tab>
+        <!-- <v-tab>
           <v-icon left>mdi-credit-card</v-icon>
           Subscriptions
-        </v-tab>
+        </v-tab> -->
 
         <v-tab-item>
           <v-card flat>
-            <LazySettingsCards />
+            <LazySettingsCards :settings="settings" />
           </v-card>
         </v-tab-item>
         <v-tab-item>
@@ -27,3 +27,22 @@
     </v-card>
   </v-container>
 </template>
+
+<script>
+export default {
+  async asyncData({ $axios, store }) {
+    const userId = store.state.auth.id
+
+    try {
+      const settings = await $axios.$get('/settings', {
+        userId,
+      })
+
+      return { settings }
+    } catch (error) {
+      console.log(error)
+      return { error }
+    }
+  },
+}
+</script>

@@ -5,54 +5,28 @@
     </v-card>
     <v-row>
       <v-col cols="12" class="account-header">
-        <h1 id="username">Tajeddine</h1>
+        <h1 id="username">{{ profile.username }}</h1>
         <v-subheader style="height: 13px" id="age-location"
-          >23, Marrakech</v-subheader
+          >{{ profile.birthday }}, {{ profile.country }}</v-subheader
         >
       </v-col>
     </v-row>
     <!-- Cards -->
     <section>
-      <v-form @submit.prevent="saveInfos">
+      <v-form @submit.prevent="patchProfile">
         <v-list class="mt-5" three-line subheader>
-          <v-row>
-            <v-col class="ml-auto mr-3" cols="6">
-              <transition name="fade">
-                <v-btn
-                  class="save-edit"
-                  v-if="!isEdit"
-                  id="edit-btn"
-                  color="primary"
-                  large
-                  @click="editInfos"
-                  >Edit</v-btn
-                >
-                <v-btn
-                  class="save-edit"
-                  v-if="isEdit"
-                  id="save-btn"
-                  color="primary"
-                  large
-                  type="submit"
-                  >Save</v-btn
-                >
-              </transition>
-            </v-col>
-          </v-row>
-
+          <!-- v-if="this.$route.params.profile = this.$store.state.auth.id" -->
           <v-row>
             <v-col cols="12">
-              <v-card
-                class="my-3"
-                v-for="(profile, index) in profileInfo"
-                :key="index"
+              <v-card class="my-3" v-for="profile in profile" :key="profile.id"
                 ><v-list-item>
                   <v-list-item-content>
                     <v-list-item-title>{{ profile.title }}</v-list-item-title>
                     <v-textarea
+                      v-if="isEdit"
+                      rows="1"
                       filled
                       auto-grow
-                      v-if="isEdit"
                       v-model="profile.subtitle"
                     >
                     </v-textarea>
@@ -61,11 +35,30 @@
                       profile.subtitle
                     }}</v-list-item-subtitle>
                   </v-list-item-content>
+
+                  <v-btn @click="isEdit = !isEdit" id="edit-icon" icon
+                    ><v-icon>mdi-pencil</v-icon></v-btn
+                  >
                 </v-list-item>
               </v-card>
               <v-card class="mb-7">
                 <LazyProfileCombobox />
               </v-card>
+              <v-row>
+                <v-col class="ml-auto mr-3" cols="6">
+                  <transition name="fade">
+                    <v-btn
+                      class="save-edit"
+                      v-if="isEdit"
+                      id="save-btn"
+                      color="primary"
+                      x-large
+                      type="submit"
+                      >Save</v-btn
+                    >
+                  </transition>
+                </v-col>
+              </v-row>
             </v-col>
           </v-row>
         </v-list>
@@ -76,49 +69,37 @@
 
 <script>
 export default {
-  // async asyncData({ $axios, params }) {
-  //   try {
-  //     const userId = params.profile
-  //     let profile = await $axios.$get('/profile', userId)
-  //     console.log(userId)
-  //     return { profile }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
+  async asyncData({ $axios, store, params }) {
+    const data = {
+      userId: params.profile,
+    }
 
+    try {
+      const profile = await $axios.$get('/profile', {
+        params: data,
+      })
+
+      return { profile }
+    } catch (error) {
+      console.log(error)
+      return { error }
+    }
+  },
   data: () => ({
     isEdit: false,
-    profileInfo: [
-      {
-        title: 'My self-summary',
-        subtitle:
-          'Lorem ipsum dolor sit amet consectetur adipisicing elit.Voluptatem esse, blanditiis tempore alsias aut at quis saepe,consequatur dolor fuga sequi natus.',
-      },
-      {
-        title: 'I spend a lot of time thinking about',
-        subtitle: 'Futre for example',
-      },
-      { title: 'Languages i want to learn', subtitle: 'Javascript' },
-      { title: 'things i could never live without', subtitle: 'Pc' },
-      { title: 'My golden rule', subtitle: 'Stay positive' },
-      { title: 'My next big trip', subtitle: 'Japan' },
-    ],
+    // profileQuestions: [],
   }),
   methods: {
-    editInfos() {
-      this.isEdit = true
-    },
-    async saveInfos() {
+    async patchProfile() {
       try {
         this.$nuxt.$loading.start()
 
         const userId = this.$store.state.auth.id
-        const profileInfo = this.profileInfo
+        const profile = this.profileQuestions
 
         const data = {
           userId,
-          profileInfo,
+          profile,
         }
 
         await this.$axios.patch('/profile', data)
@@ -157,6 +138,11 @@ img,
   margin-top: 1.5%;
 }
 
+#edit-icon {
+  display: flex;
+  margin-left: auto;
+}
+
 input:hover {
   cursor: pointer;
 }
@@ -169,7 +155,7 @@ input:hover {
 
 .fade-enter-active,
 .fade-leave-active {
-  transition: opacity 5s;
+  transition: opacity 1.3s ease-in-out;
 }
 .fade-enter,
 .fade-leave-to {

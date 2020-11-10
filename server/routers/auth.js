@@ -4,6 +4,7 @@ const router = new express.Router()
 
 // * Db model
 const User = require('../model/user')
+const Profile = require('../model/profile')
 
 router.post('/signup', async (req, res) => {
   const { email, username } = req.body
@@ -11,14 +12,18 @@ router.post('/signup', async (req, res) => {
   try {
     const user = new User(req.body)
 
+    const { id, username } = user
+
+    const profile = await Profile.create({
+      owner: id,
+    })
+
     // TODO Add username to checkDuplication()
     await User.checkDuplication(email)
 
     await user.save()
 
     const token = await user.generateAuthToken()
-
-    const { id, username } = user
 
     res.status(200).json({ id, token, username })
   } catch (e) {
@@ -35,7 +40,7 @@ router.post('/login', async (req, res) => {
 
     const token = await user.generateAuthToken()
 
-    const { id, username, avatar } = user
+    const { id, username } = user
 
     res.status(200).json({ id, token, username })
   } catch (e) {

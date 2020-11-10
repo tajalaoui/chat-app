@@ -1,10 +1,10 @@
 <template>
   <v-container>
-    <v-dialog v-model="filterProfiles" persistent max-width="600px">
+    <v-dialog v-model="filterModal" persistent max-width="650px">
       <template v-slot:activator="{ filter, filterAttrs }">
         <icon
           class="filter-icon d-block ml-auto mr-5 mb-3"
-          @click="filterProfiles = !filterProfiles"
+          @click="filterModal = true"
           v-bind="filterAttrs"
           v-on="filter"
           large
@@ -59,8 +59,8 @@
         </v-card-text>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn @click="filterProfiles = false">Cancel</v-btn>
-          <v-btn color="primary" @click="filterProfiles = false">Filter</v-btn>
+          <v-btn @click="filterModal = false">Cancel</v-btn>
+          <v-btn color="primary" @click="filterProfiles">Filter</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
@@ -72,47 +72,55 @@
 
 <script>
 export default {
-  // async asyncData({ $axios }) {
-  //   try {
-  //     let users = await $axios.$get('/users')
+  async asyncData({ $axios, store }) {
+    const token = store.state.auth.token
 
-  //     return { users }
-  //   } catch (error) {
-  //     console.log(error)
-  //   }
-  // },
-  async fetch() {
-    //const users = await this.$axios.$get('/users')
-    const token = this.$store.state.auth.token
+    try {
+      let users = await $axios.$get('/users')
 
-    console.log('token ?', token)
-
-    const users = await fetch('http://localhost:3000/users', {
-      method: 'GET',
-      //body: JSON.stringify({}),
-      headers: {
-        //'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`,
-      },
-      //credentials: 'include',
-    }).then(function (res) {
-      if (res.status >= 200 && res.status < 300) {
-        return res
-      } else {
-        console.log(res.statusText)
-      }
-    }).then(res => res.json())
-
-    this.users = users
+      return { users }
+    } catch (error) {
+      console.log(error)
+    }
   },
+  // async fetch() {
+  //   const token = this.$store.state.auth.token
+
+  //   console.log('token ?', token)
+
+  //   const users = await fetch('http://localhost:3000/users', {
+  //     method: 'GET',
+  //     //body: JSON.stringify({}),
+  //     headers: {
+  //       //'Content-Type': 'application/json',
+  //       Authorization: `Bearer ${token}`,
+  //     },
+  //     //credentials: 'include',
+  //   })
+  //     .then(function (res) {
+  //       if (res.status >= 200 && res.status < 300) {
+  //         return res
+  //       } else {
+  //         console.log(res.statusText)
+  //       }
+  //     })
+  //     .then((res) => res.json())
+
+  //   this.users = users
+  // },
   data: () => ({
     users: [],
-    filterProfiles: false,
+    filterModal: false,
     minAge: null,
     maxAge: null,
     countries: ['Morocco', 'United Kingdom'],
     country: null,
   }),
+  methods: {
+    filterProfiles() {
+      // this.$axios.$get('/user')
+    },
+  },
 }
 </script>
 

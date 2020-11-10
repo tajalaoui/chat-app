@@ -16,7 +16,7 @@
       </v-card-title>
       <v-card-text>
         <v-container>
-          <v-form @submit.prevent="validate" v-model="valid" ref="form">
+          <v-form @submit.prevent="submitForm" v-model="valid" ref="form">
             <v-row
               ><v-col cols="6">
                 <v-text-field
@@ -68,7 +68,7 @@
                   <template v-slot:activator="{ on, attrs }">
                     <v-text-field
                       v-model="userInfo.birthday"
-                      label="Picker in menu"
+                      label="Birthday date"
                       prepend-icon="mdi-calendar"
                       readonly
                       v-bind="attrs"
@@ -76,10 +76,11 @@
                     ></v-text-field>
                   </template>
                   <v-date-picker
+                    ref="picker"
                     v-model="userInfo.birthday"
-                    type="month"
-                    no-title
-                    scrollable
+                    format="YYYY-MM-dd"
+                    min="1950-01-01"
+                    max="2003-01-01"
                   >
                     <v-spacer></v-spacer>
                     <v-btn text color="primary" @click="menu = false">
@@ -135,7 +136,7 @@ export default {
       email: null,
       password: null,
       gender: null,
-      birthday: new Date().toISOString().substr(0, 7),
+      birthday: null,
       country: null,
     },
     gender: ['Male', 'Female'],
@@ -143,7 +144,6 @@ export default {
     showPassword: false,
     signupModal: false,
     valid: false,
-    // Birthday
     menu: false,
     rules: {
       username: [
@@ -164,11 +164,7 @@ export default {
       country: [(v) => !!v || 'Selection of country is required'],
     },
   }),
-
   methods: {
-    validate() {
-      this.submitForm()
-    },
     async submitForm() {
       try {
         this.$nuxt.$loading.start()
@@ -181,5 +177,15 @@ export default {
       }
     },
   },
+  watch: {
+    menu(val) {
+      val && setTimeout(() => (this.$refs.picker.activePicker = 'YEAR'))
+    },
+  },
+  // maxDate() {
+  //   const date = new Date()
+  //   date.setFullYear(date.getFullYear() - 18)
+  //   return date.toISOString().substr(0, 10)
+  // },
 }
 </script>

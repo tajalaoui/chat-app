@@ -23,24 +23,13 @@ export const mutations = {
     //   secure: true,
     // })
 
-    this.$axios.defaults.headers.common['authorization'] = `Bearer ${token}`
-    //this.$axios.setHeader('Authorization', `Bearer ${token}`)
-    //this.$axios.setToken(token, 'Bearer')
-
-    console.log('SET TOKEN 🟩', token)
-
     this.$router.push('/')
   },
   CLEAR_USER_DATA(state) {
-    state.user = null
+    state.token = null
     state.isAuthenticated = false
 
     this.$cookies.remove('user')
-
-    this.$axios.defaults.headers.common['authorization'] = null
-    //this.$axios.setHeader('Authorization', null)
-    //this.$axios.setToken(false)
-
 
     this.$router.push('/welcome')
   },

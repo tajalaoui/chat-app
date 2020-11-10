@@ -9,10 +9,7 @@ export default {
    ** See https://nuxtjs.org/api/configuration-target
    */
   target: 'server',
-  serverMiddleware: [
-    cookieParser(),
-    '@/server/app.js'
-  ],
+  serverMiddleware: [cookieParser(), '@/server/app.js'],
   /*
    ** Headers of the page
    ** See https://nuxtjs.org/api/configuration-head
@@ -56,12 +53,8 @@ export default {
    ** Plugins to load before mounting the App
    ** https://nuxtjs.org/guide/plugins
    */
-  plugins: [
-    // todo to check if client mode is the right one
-    { src: '@/plugins/auth.js', mode: 'client' },
-    // '@/plugins/auth.js',
-    '@/plugins/fontawesome.js',
-  ],
+  plugins: ['@/plugins/fontawesome.js', '@/plugins/auth.js'],
+  
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -73,10 +66,10 @@ export default {
     icon: {
       iconSrc: '@/static/icon.png',
     },
-    short_name: 'GP',
-    name: 'Globi Pals',
+    short_name: 'Midirrio',
+    name: 'Midirrio',
     // TODO: edit descreption
-    descreption: 'Global Penpals',
+    descreption: 'Midirrio',
     start_url: '/',
     theme_color: '#29f709',
     background_color: '#29f709',

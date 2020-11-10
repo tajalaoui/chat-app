@@ -31,37 +31,8 @@
         <v-card-actions>
           <!-- Modiefied -->
           <nuxt-link :to="`/profile/${user._id}`"
-            >View Profile {{ user.id }}</nuxt-link
+            ><v-btn text>View Profile</v-btn> {{ user.id }}</nuxt-link
           >
-          <v-dialog v-model="msgDialog" persistent width="600px">
-            <template v-slot:activator="{ msg, msgAttrs }">
-              <v-btn
-                @click="msgDialog = !msgDialog"
-                color="primary"
-                v-on="msg"
-                v-bind="msgAttrs"
-                text
-              >
-                Send Message
-              </v-btn>
-            </template>
-            <v-card>
-              <v-textarea
-                v-model.trim="message"
-                solo
-                placeholder="Send Message"
-                cols="25"
-                rows="7"
-              ></v-textarea>
-
-              <v-card-actions>
-                <v-btn class="d-block ml-auto" @click="msgDialog = false"
-                  >Cancel</v-btn
-                >
-                <v-btn color="primary">Send</v-btn>
-              </v-card-actions>
-            </v-card>
-          </v-dialog>
         </v-card-actions>
       </v-card>
     </v-col>
@@ -73,10 +44,6 @@ export default {
   props: {
     users: Array,
   },
-  data: () => ({
-    msgDialog: false,
-    message: '',
-  }),
 }
 </script>
 

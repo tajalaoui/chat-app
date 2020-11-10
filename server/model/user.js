@@ -53,22 +53,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  isAdmin: {
-    type: Boolean,
-    default: false,
-  },
+  // isAdmin: {
+  //   type: Boolean,
+  //   default: false,
+  // },
   avatar: {
     // type: String,
     type: Buffer,
     // default: false,
   },
-  profileData: [
-    {
-      _id: false,
-      title: String,
-      subtitle: String,
-    },
-  ],
+  profile: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'Profile',
+  },
 })
 
 // Generating token after registering OR login

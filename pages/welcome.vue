@@ -4,7 +4,7 @@
       <v-col cols="12" md="6">
         <header>
           <h1 class="d-block mx-auto">Looking for global friends ?</h1>
-          <h4>GlobiPals is your place</h4>
+          <h4 class="subtitle-1">middirio is your place</h4>
 
           <div class="mt-3">
             <LazySignupModal />

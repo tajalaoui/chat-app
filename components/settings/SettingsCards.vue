@@ -3,18 +3,18 @@
     <v-row>
       <v-col class="ml-7" cols="10" md5>
         <v-text-field
-          :value="profileInfo.username"
+          :value="settings.username"
           label="Username"
           type="text"
         ></v-text-field>
         <v-text-field
-          :value="profileInfo.email"
+          :value="settings.email"
           label="Email"
           type="email"
         ></v-text-field>
 
         <v-text-field
-          :value="profileInfo.password"
+          :value="settings.password"
           label="Password"
           type="password"
         ></v-text-field>
@@ -31,6 +31,9 @@
 
 <script>
 export default {
+  props: {
+    settings: String,
+  },
   data: () => ({
     isEdit: false,
     isDark: null,

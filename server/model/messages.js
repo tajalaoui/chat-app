@@ -1,15 +1,21 @@
-const { ObjectID } = require('mongodb')
 const mongoose = require('mongoose')
 
-const messages = new mongoose.Schema({
-  owner: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'user',
-    // required: true,
+const messages = new mongoose.Schema(
+  {
+    message: {
+      type: String,
+    },
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
+    receiver: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User',
+    },
   },
-  //   messages: [],
-  timestamps: true,
-})
+  { timestamps: { createdAt: true, updatedAt: false } }
+)
 
 const Messages = mongoose.model('messages', messages)
 
