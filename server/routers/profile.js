@@ -10,13 +10,18 @@ router.get('/profile', auth, async (req, res) => {
   const { userId } = req.query
 
   try {
-    const profile = await User.findById(userId).populate('Profile')
+    const profile = await User.findById(userId).populate('profile')
+    // const profile = await User.findById('5fad3613e15afc00d3d413ad').populate(
+    //   'profile'
+    // )
 
-    const { profileQuestions, username, birthday, country } = profile
+    console.log(profile)
 
-    console.log(profileQuestions, username, birthday, country)
+    // const { profileQuestions, username, birthday, country, test } = profile
 
-    res.json({ profileQuestions, username, birthday, country })
+    // console.log(profileQuestions, username, birthday, country, test)
+
+    res.json(profile)
   } catch (e) {
     res.status(400).json(e.message)
   }
@@ -28,7 +33,7 @@ router.patch('/profile', auth, async (req, res) => {
   try {
     const profile = await Profile.create(
       {
-        $set: {
+        $set: {          
           owner: userId,
           profileData: profile,
         },

@@ -5,7 +5,7 @@
   "scripts": {
     "serve": "nuxt serve",
     "build": "nuxt build",
-    "dev": "nuxt && nodemon server/app.js",
+    "dev": "nuxt",
     "export": "nuxt export",
     "generate": "nuxt generate",
     "start": "nuxt start"

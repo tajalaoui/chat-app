@@ -66,7 +66,7 @@
     </v-dialog>
     <v-divider></v-divider>
     <!-- Card for each user -->
-    <section><LazyHomeCard :users="users" /></section>
+    <section><LazyUserCard :users="users" /></section>
   </v-container>
 </template>
 

@@ -12,57 +12,40 @@
       </v-col>
     </v-row>
     <!-- Cards -->
-    <section>
-      <v-form @submit.prevent="patchProfile">
-        <v-list class="mt-5" three-line subheader>
-          <!-- v-if="this.$route.params.profile = this.$store.state.auth.id" -->
-          <v-row>
-            <v-col cols="12">
-              <v-card class="my-3" v-for="profile in profile" :key="profile.id"
-                ><v-list-item>
-                  <v-list-item-content>
-                    <v-list-item-title>{{ profile.title }}</v-list-item-title>
-                    <v-textarea
-                      v-if="isEdit"
-                      rows="1"
-                      filled
-                      auto-grow
-                      v-model="profile.subtitle"
-                    >
-                    </v-textarea>
+    <section class="mt-5">
+      <v-tabs>
+        <v-tab>
+          <v-icon left>mdi-rss</v-icon>
+          Feed
+        </v-tab>
+        <v-tab-item>
+          <!-- Component -->
+        </v-tab-item>
 
-                    <v-list-item-subtitle v-else>{{
-                      profile.subtitle
-                    }}</v-list-item-subtitle>
-                  </v-list-item-content>
+        <v-tab>
+          <v-icon left>mdi-account</v-icon>
+          About
+        </v-tab>
+        <v-tab-item>
+          <LazyAboutTab :profile="profile" />
+        </v-tab-item>
 
-                  <v-btn @click="isEdit = !isEdit" id="edit-icon" icon
-                    ><v-icon>mdi-pencil</v-icon></v-btn
-                  >
-                </v-list-item>
-              </v-card>
-              <v-card class="mb-7">
-                <LazyProfileCombobox />
-              </v-card>
-              <v-row>
-                <v-col class="ml-auto mr-3" cols="6">
-                  <transition name="fade">
-                    <v-btn
-                      class="save-edit"
-                      v-if="isEdit"
-                      id="save-btn"
-                      color="primary"
-                      x-large
-                      type="submit"
-                      >Save</v-btn
-                    >
-                  </transition>
-                </v-col>
-              </v-row>
-            </v-col>
-          </v-row>
-        </v-list>
-      </v-form>
+        <v-tab>
+          <v-icon left>mdi-image-multiple</v-icon>
+          Gallery
+        </v-tab>
+        <v-tab-item>
+          <!-- Component -->
+        </v-tab-item>
+
+        <v-tab>
+          <v-icon left>mdi-account-group</v-icon>
+          Friends
+        </v-tab>
+        <v-tab-item>
+          <!-- Component -->
+        </v-tab-item>
+      </v-tabs>
     </section>
   </v-container>
 </template>
@@ -87,6 +70,8 @@ export default {
   },
   data: () => ({
     isEdit: false,
+    tab: null,
+    tabnames: ['About', 'Gallery', 'Friends'],
     // profileQuestions: [],
   }),
   methods: {
@@ -122,7 +107,7 @@ export default {
     height: 225px;
     width: 225px;
     position: relative;
-    top: 25%;
+    top: 24%;
     margin: 0 auto;
   }
 }

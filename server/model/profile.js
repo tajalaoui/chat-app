@@ -5,6 +5,10 @@ const profile = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',
   },
+  test: {
+    type: String,
+    default: 'Hello World',
+  },
   profileQuestions: [
     {
       _id: false,

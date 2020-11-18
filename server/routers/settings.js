@@ -8,7 +8,7 @@ router.get('/settings', auth, async (req, res) => {
   console.log(`user id: ${userId}`)
 
   try {
-    const settings = await User.findById('5faa58920f950b00675ff3ab')
+    const settings = await User.findById(userId)
 
     const { username, email, password } = settings
 
