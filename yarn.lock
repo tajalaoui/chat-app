@@ -1249,10 +1249,12 @@
     consola "^2.15.0"
     defu "^3.1.0"
 
-"@nuxtjs/device@^1.2.7":
-  version "1.2.7"
-  resolved "https://registry.yarnpkg.com/@nuxtjs/device/-/device-1.2.7.tgz#ccb6f33b1eed0c7725ab8668526da92534624154"
-  integrity sha512-Vyhw2ZSaUigFtRed5DjscV9jKevenvgFD5527rVAUzpSUQTcLau8NN+Zdf463bUr5xLwCDl7wUA4+1rGROmA5w==
+"@nuxtjs/device@^2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@nuxtjs/device/-/device-2.1.0.tgz#552c668b2d82dc982d18429845777c19d48d87d6"
+  integrity sha512-TYBdt1w2bmCCWp+MhgcBATZtqyUBi3nSdNpcLGILw5USLwCsC/yZtIkq9YisuEzuRnod9w/RZpoE80MxLftEuA==
+  dependencies:
+    defu "^3.2.2"
 
 "@nuxtjs/dotenv@^1.4.1":
   version "1.4.1"
@@ -3242,10 +3244,10 @@ defu@^2.0.4:
   resolved "https://registry.yarnpkg.com/defu/-/defu-2.0.4.tgz#09659a6e87a8fd7178be13bd43e9357ebf6d1c46"
   integrity sha512-G9pEH1UUMxShy6syWk01VQSRVs3CDWtlxtZu7A+NyqjxaCA4gSlWAKDBx6QiUEKezqS8+DUlXLI14Fp05Hmpwg==
 
-defu@^3.1.0:
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/defu/-/defu-3.1.0.tgz#a6b5104cacc06aa1efa01923becddbedd32505e8"
-  integrity sha512-pc7vS4wbYFtsRL+OaLHKD72VcpOz9eYgzZeoLz9pCs+R8htyPdZnD1CxKP9ttZuT90CLPYFTSaTyc3/7v4gG9A==
+defu@^3.1.0, defu@^3.2.2:
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/defu/-/defu-3.2.2.tgz#be20f4cc49b9805d54ee6b610658d53894942e97"
+  integrity sha512-8UWj5lNv7HD+kB0e9w77Z7TdQlbUYDVWqITLHNqFIn6khrNHv5WQo38Dcm1f6HeNyZf0U7UbPf6WeZDSdCzGDQ==
 
 denque@^1.4.1:
   version "1.4.1"
