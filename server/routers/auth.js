@@ -5,23 +5,30 @@ const router = new express.Router()
 // * Db model
 const User = require('../model/user')
 const Profile = require('../model/profile')
+// !gregre
+const { findByIdAndUpdate } = require('../model/user')
 
 router.post('/signup', async (req, res) => {
   const { email, username } = req.body
 
   try {
-    const user = new User(req.body)
+    // Id of profile needs to be in user
+    const profile = await Profile.create()
+    // const { id } = profile
+    // console.log(`profile id: ${profile._id}`)
+
+    const user = await User.create(req.body)
 
     const { id, username } = user
 
-    const profile = await Profile.create({
-      owner: id,
-    })
+    // Give profile id to user model
+    // const createId = await User.findByIdAndUpdate(profile._id)
 
     // TODO Add username to checkDuplication()
     await User.checkDuplication(email)
 
     await user.save()
+    await profile.save()
 
     const token = await user.generateAuthToken()
 
@@ -49,3 +56,32 @@ router.post('/login', async (req, res) => {
 })
 
 module.exports = router
+
+//
+
+const inputData = [
+  {
+    id: 1,
+    title: 'hippo',
+    faveFood: 'carrots',
+  },
+  {
+    id: 2,
+    title: 'Cat',
+    faveFood: 'carrots',
+  },
+  {
+    id: 3,
+    title: 'ducks',
+    faveFood: 'breadcrumbs',
+  },
+]
+
+function findAnimal(title) {
+  var animal = inputData.find((animal) => animal.title === title)
+  if (animal.hasOwnProperty('faveFood')) {
+    return animal.faveFood
+  }
+}
+
+console.log(findAnimal('hippo'))

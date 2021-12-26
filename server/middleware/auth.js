@@ -7,6 +7,8 @@ function auth(req, res, next) {
 
     const decoded = jwt.verify(token, 'jwt_secret')
 
+    // TODO Re add bearer ?
+
     if (!decoded) {
       return res.sendStatus(403)
     }

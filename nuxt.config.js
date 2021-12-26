@@ -33,10 +33,6 @@ export default {
    ** Customize the progress-bar color
    */
   loading: { color: '#29f709', height: '5px' },
-  /*
-   ** Global CSS
-   */
-  css: ['@/assets/style.scss'],
 
   styleResources: {
     scss: ['@/assets/style.scss'],
@@ -54,7 +50,7 @@ export default {
    ** https://nuxtjs.org/guide/plugins
    */
   plugins: ['@/plugins/fontawesome.js', '@/plugins/auth.js'],
-  
+
   /*
    ** Auto import components
    ** See https://nuxtjs.org/api/configuration-components
@@ -96,7 +92,7 @@ export default {
    ** https://github.com/nuxt-community/vuetify-module
    */
   vuetify: {
-    customVariables: ['~/assets/variables/variables.scss'],
+    customVariables: ['@/assets/style.scss'],
     theme: {
       dark: false,
       themes: {
@@ -115,9 +111,6 @@ export default {
       },
       icons: {
         iconfont: 'mdi',
-      },
-      font: {
-        family: 'Montserrat',
       },
     },
   },

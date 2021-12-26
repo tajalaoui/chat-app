@@ -32,7 +32,7 @@
 <script>
 export default {
   props: {
-    settings: String,
+    settings: Object,
   },
   data: () => ({
     isEdit: false,

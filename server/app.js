@@ -1,6 +1,7 @@
 const app = require('express')()
 const bodyParser = require('body-parser')
 const cors = require('cors')
+const helmet = require('helmet')
 
 // Db
 require('./db/mongoose.js')
@@ -13,6 +14,7 @@ app.use(
 )
 app.use(bodyParser.json())
 app.use(cors())
+// app.use(helmet())
 
 // * Routers.
 const AUTH = require('./routers/auth.js')

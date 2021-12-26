@@ -54,7 +54,7 @@
 <script>
 export default {
   props: {
-    profile: Array,
+    profile: Object,
   },
 }
 </script>

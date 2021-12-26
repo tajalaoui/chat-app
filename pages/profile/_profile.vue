@@ -71,6 +71,7 @@ export default {
   data: () => ({
     isEdit: false,
     tab: null,
+    // !
     tabnames: ['About', 'Gallery', 'Friends'],
     // profileQuestions: [],
   }),

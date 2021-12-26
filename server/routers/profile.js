@@ -10,7 +10,12 @@ router.get('/profile', auth, async (req, res) => {
   const { userId } = req.query
 
   try {
-    const profile = await User.findById(userId).populate('profile')
+    const profile = await Profile.findById('5faa58920f950b00675ff3ad').populate(
+      {
+        path: 'owner',
+        select: 'name description',
+      }
+    )
     // const profile = await User.findById('5fad3613e15afc00d3d413ad').populate(
     //   'profile'
     // )
@@ -33,7 +38,7 @@ router.patch('/profile', auth, async (req, res) => {
   try {
     const profile = await Profile.create(
       {
-        $set: {          
+        $set: {
           owner: userId,
           profileData: profile,
         },

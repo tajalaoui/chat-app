@@ -5,11 +5,11 @@
         Copyright @{{ new Date().getFullYear() }} - Developed by -
         <strong>
           <a
-            href="https://devtaj.com/"
+            href="https://tajeddine.dev/"
             target="_blank"
             rel="noopener"
             role="button"
-            >devtaj.com</a
+            >tajeddine.dev</a
           ></strong
         >
       </div>
